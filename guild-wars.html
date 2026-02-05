@@ -8,33 +8,13 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Paste your full nav here (same as in index.html) -->
+    <!-- Your current nav (no dropdown on hover) -->
     <nav>
         <a href="index.html">Home</a>
         <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank">Play</a>
         <a href="https://www.facebook.com/profile.php?id=100083121342903" target="_blank">News</a>
         <a href="https://www.facebook.com/groups/ninjamasterashinobisaga" target="_blank">Community</a>
-
-        <div class="dropdown">
-            <a href="guild-wars.html" class="dropbtn">Guild War Results and Rewards</a>
-            <div class="dropdown-content">
-                <a href="guild-wars.html">All Seasons</a>
-                <a href="guild-wars.html#season-1">Season 1</a>
-                <a href="guild-wars.html#season-2">Season 2</a>
-                <a href="guild-wars.html#season-3">Season 3</a>
-                <a href="guild-wars.html#season-4">Season 4</a>
-                <a href="guild-wars.html#season-5">Season 5</a>
-                <a href="guild-wars.html#season-6">Season 6</a>
-                <a href="guild-wars.html#season-7">Season 7</a>
-                <a href="guild-wars.html#season-8">Season 8</a>
-                <a href="guild-wars.html#season-9">Season 9</a>
-                <a href="guild-wars.html#season-10">Season 10</a>
-                <a href="guild-wars.html#season-11">Season 11</a>
-                <a href="guild-wars.html#season-12">Season 12</a>
-                <a href="guild-wars.html#season-13">Season 13</a>
-            </div>
-        </div>
-
+        <a href="guild-wars.html">Guild War Results and Rewards</a>
         <a href="https://nm-kekkai-solver.netlify.app/" target="_blank">Kekkai Solver and Simulator</a>
         <a href="https://nm-stats-simulator.vercel.app/" target="_blank">Stats Simulator</a>
         <a href="https://ninjamaster.rpg-board.net/f3-guides" target="_blank">Guides</a>
@@ -44,13 +24,13 @@
 
     <div class="hero">
         <h1>Guild War Results & Rewards</h1>
-        <p>Historical guild rankings, winners, and rewards for each season. Select a season below to view details.</p>
+        <p>Historical guild rankings, winners, and rewards. Select a season to load details.</p>
     </div>
 
     <div class="container">
         <div class="section">
             <h2>Select Season</h2>
-            <select id="seasonSelect" onchange="showSeason()">
+            <select id="seasonSelect" onchange="loadSeason()">
                 <option value="">-- Choose a Season --</option>
                 <option value="1">Season 1</option>
                 <option value="2">Season 2</option>
@@ -65,10 +45,10 @@
                 <option value="11">Season 11</option>
                 <option value="12">Season 12</option>
                 <option value="13">Season 13</option>
-                <!-- Add later: <option value="14">Season 14</option> -->
+                <!-- To add Season 14: <option value="14">Season 14</option> -->
             </select>
 
-            <div id="seasonContent" style="margin-top: 2rem; min-height: 300px;">
+            <div id="seasonContent" style="margin-top: 2rem; min-height: 400px;">
                 <p id="placeholder">Select a season to view rankings, winners, and rewards.</p>
             </div>
         </div>
@@ -79,56 +59,36 @@
     </footer>
 
     <script>
-        // Edit this object to add or update season data
-        const seasonsData = {
-            "1": {
-                title: "Season 1",
-                content: `
-                    <table>
-                        <thead><tr><th>Rank</th><th>Guild Name</th><th>Rewards</th></tr></thead>
-                        <tbody>
-                            <tr><td>1</td><td>Ragnarok</td><td>Exclusive Jutsu + Tokens + Custom Rewards</td></tr>
-                            <tr><td>2</td><td>Otsutsuki</td><td>Tokens + Custom Rewards</td></tr>
-                            <!-- Add more rows -->
-                        </tbody>
-                    </table>
-                    <p><strong>Champion:</strong> Ragnarok</p>
-                `
-            },
-            "13": {
-                title: "Season 13",
-                content: `
-                    <table>
-                        <thead><tr><th>Rank</th><th>Guild Name</th><th>Rewards</th></tr></thead>
-                        <tbody>
-                            <tr><td>1</td><td>[Guild Name Here]</td><td>Hattrick Champion + Exclusive Items</td></tr>
-                            <!-- Fill real data -->
-                        </tbody>
-                    </table>
-                    <p>Update with latest info from Facebook or in-game.</p>
-                `
-            }
-            // Example for future season:
-            // "14": { title: "Season 14", content: `<table>...</table><p>Your data</p>` }
-        };
-
-        function showSeason() {
+        async function loadSeason() {
             const select = document.getElementById('seasonSelect');
             const contentDiv = document.getElementById('seasonContent');
             const placeholder = document.getElementById('placeholder');
-            const value = select.value;
+            const season = select.value;
 
-            if (value && seasonsData[value]) {
-                placeholder.style.display = 'none';
-                contentDiv.innerHTML = `
-                    <h2>${seasonsData[value].title}</h2>
-                    ${seasonsData[value].content}
-                `;
-            } else {
+            if (!season) {
                 placeholder.style.display = 'block';
                 contentDiv.innerHTML = '';
+                return;
+            }
+
+            placeholder.style.display = 'none';
+            contentDiv.innerHTML = '<p style="color: #ffcc00;">Loading Season ' + season + '...</p>';
+
+            try {
+                const response = await fetch(`seasons/season${season}.html`);
+                if (!response.ok) throw new Error('File not found or error loading.');
+                const html = await response.text();
+                contentDiv.innerHTML = html;  // Inserts the full HTML from the file – keeps your style
+            } catch (error) {
+                contentDiv.innerHTML = `<p style="color: #ff6347;">Error loading Season ${season}: ${error.message}.<br>Make sure seasons/season${season}.html exists in your repo.</p>`;
             }
         }
+
+        // Optional: Auto-load the latest season on page open (change '13' to new one later)
+        // window.addEventListener('load', () => {
+        //     document.getElementById('seasonSelect').value = '13';
+        //     loadSeason();
+        // });
     </script>
 </body>
 </html>
