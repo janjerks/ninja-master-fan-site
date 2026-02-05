@@ -1,7 +1,134 @@
-<h2>Guild War History & Rewards</h2>
-<table border="1">
-    <tr><th>Season</th><th>Winner Guild</th><th>Top Rewards</th></tr>
-    <tr><td>Season 1</td><td>Ragnarok</td><td>Exclusive Jutsu, Tokens</td></tr>
-    <tr><td>Season 13</td><td>[Add]</td><td>[Add latest rewards]</td></tr>
-    <!-- Add more rows as you update -->
-</table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guild War Results & Rewards - Ninja Master Fan Site</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Paste your full nav here (same as in index.html) -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank">Play</a>
+        <a href="https://www.facebook.com/profile.php?id=100083121342903" target="_blank">News</a>
+        <a href="https://www.facebook.com/groups/ninjamasterashinobisaga" target="_blank">Community</a>
+
+        <div class="dropdown">
+            <a href="guild-wars.html" class="dropbtn">Guild War Results and Rewards</a>
+            <div class="dropdown-content">
+                <a href="guild-wars.html">All Seasons</a>
+                <a href="guild-wars.html#season-1">Season 1</a>
+                <a href="guild-wars.html#season-2">Season 2</a>
+                <a href="guild-wars.html#season-3">Season 3</a>
+                <a href="guild-wars.html#season-4">Season 4</a>
+                <a href="guild-wars.html#season-5">Season 5</a>
+                <a href="guild-wars.html#season-6">Season 6</a>
+                <a href="guild-wars.html#season-7">Season 7</a>
+                <a href="guild-wars.html#season-8">Season 8</a>
+                <a href="guild-wars.html#season-9">Season 9</a>
+                <a href="guild-wars.html#season-10">Season 10</a>
+                <a href="guild-wars.html#season-11">Season 11</a>
+                <a href="guild-wars.html#season-12">Season 12</a>
+                <a href="guild-wars.html#season-13">Season 13</a>
+            </div>
+        </div>
+
+        <a href="https://nm-kekkai-solver.netlify.app/" target="_blank">Kekkai Solver and Simulator</a>
+        <a href="https://nm-stats-simulator.vercel.app/" target="_blank">Stats Simulator</a>
+        <a href="https://ninjamaster.rpg-board.net/f3-guides" target="_blank">Guides</a>
+        <a href="https://ninjamaster.rpg-board.net/" target="_blank">Forum</a>
+        <a href="https://ninjamaster.rpg-board.net/f5-support-questions" target="_blank">Support</a>
+    </nav>
+
+    <div class="hero">
+        <h1>Guild War Results & Rewards</h1>
+        <p>Historical guild rankings, winners, and rewards for each season. Select a season below to view details.</p>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Select Season</h2>
+            <select id="seasonSelect" onchange="showSeason()">
+                <option value="">-- Choose a Season --</option>
+                <option value="1">Season 1</option>
+                <option value="2">Season 2</option>
+                <option value="3">Season 3</option>
+                <option value="4">Season 4</option>
+                <option value="5">Season 5</option>
+                <option value="6">Season 6</option>
+                <option value="7">Season 7</option>
+                <option value="8">Season 8</option>
+                <option value="9">Season 9</option>
+                <option value="10">Season 10</option>
+                <option value="11">Season 11</option>
+                <option value="12">Season 12</option>
+                <option value="13">Season 13</option>
+                <!-- Add later: <option value="14">Season 14</option> -->
+            </select>
+
+            <div id="seasonContent" style="margin-top: 2rem; min-height: 300px;">
+                <p id="placeholder">Select a season to view rankings, winners, and rewards.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Fan-made site for Ninja Master: A Shinobi Saga | Not official | © 2026 John</p>
+    </footer>
+
+    <script>
+        // Edit this object to add or update season data
+        const seasonsData = {
+            "1": {
+                title: "Season 1",
+                content: `
+                    <table>
+                        <thead><tr><th>Rank</th><th>Guild Name</th><th>Rewards</th></tr></thead>
+                        <tbody>
+                            <tr><td>1</td><td>Ragnarok</td><td>Exclusive Jutsu + Tokens + Custom Rewards</td></tr>
+                            <tr><td>2</td><td>Otsutsuki</td><td>Tokens + Custom Rewards</td></tr>
+                            <!-- Add more rows -->
+                        </tbody>
+                    </table>
+                    <p><strong>Champion:</strong> Ragnarok</p>
+                `
+            },
+            "13": {
+                title: "Season 13",
+                content: `
+                    <table>
+                        <thead><tr><th>Rank</th><th>Guild Name</th><th>Rewards</th></tr></thead>
+                        <tbody>
+                            <tr><td>1</td><td>[Guild Name Here]</td><td>Hattrick Champion + Exclusive Items</td></tr>
+                            <!-- Fill real data -->
+                        </tbody>
+                    </table>
+                    <p>Update with latest info from Facebook or in-game.</p>
+                `
+            }
+            // Example for future season:
+            // "14": { title: "Season 14", content: `<table>...</table><p>Your data</p>` }
+        };
+
+        function showSeason() {
+            const select = document.getElementById('seasonSelect');
+            const contentDiv = document.getElementById('seasonContent');
+            const placeholder = document.getElementById('placeholder');
+            const value = select.value;
+
+            if (value && seasonsData[value]) {
+                placeholder.style.display = 'none';
+                contentDiv.innerHTML = `
+                    <h2>${seasonsData[value].title}</h2>
+                    ${seasonsData[value].content}
+                `;
+            } else {
+                placeholder.style.display = 'block';
+                contentDiv.innerHTML = '';
+            }
+        }
+    </script>
+</body>
+</html>
