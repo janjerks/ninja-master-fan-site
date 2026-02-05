@@ -75,7 +75,7 @@
             contentDiv.innerHTML = '<p style="color: #ffcc00;">Loading Season ' + season + '...</p>';
 
             try {
-                const response = await fetch(`seasons/season${season}.html`);
+                const response = await fetch(`seasons/season${season}.html?t=${Date.now()}`);
                 if (!response.ok) throw new Error('File not found or error loading.');
                 const html = await response.text();
                 contentDiv.innerHTML = html;  // Inserts the full HTML from the file – keeps your style
