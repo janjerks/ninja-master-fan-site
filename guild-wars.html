@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guild War Results & Rewards - Ninja Master Fan Site</title>
+    <title>Guild War Results & Rewards – Ninja Master Fan Site</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -23,20 +23,34 @@
 
     <div class="hero">
         <h1>Guild War Results & Rewards</h1>
-        <p>Historical guild rankings, winners, and rewards. Select a season to load details.</p>
+        <p>View historical guild rankings, winners, and rewards for each season. Select a season below.</p>
     </div>
 
     <div class="container">
         <div class="section">
             <h2>Select Season</h2>
             <select id="seasonSelect" onchange="loadSeason()">
-                <option value="">-- Choose a Season --</option>
+                <option value="">Choose a Season</option>
                 <option value="1">Season 1</option>
                 <option value="2">Season 2</option>
-                <!-- Add more seasons here as needed -->
+                <option value="3">Season 3</option>
+                <option value="4">Season 4</option>
+                <option value="5">Season 5</option>
+                <option value="6">Season 6</option>
+                <option value="7">Season 7</option>
+                <option value="8">Season 8</option>
+                <option value="9">Season 9</option>
+                <option value="10">Season 10</option>
+                <option value="11">Season 11</option>
+                <option value="12">Season 12</option>
+                <option value="13">Season 13</option>
+                <!-- To add Season 14+ later, just insert lines like this: -->
+                <!-- <option value="14">Season 14</option> -->
             </select>
 
-            <p id="placeholder" style="margin-top: 2rem;">Select a season to view rankings, winners, and rewards.</p>
+            <p id="placeholder" style="margin-top: 2rem; color: #aaa;">
+                Select a season above to view rankings and rewards.
+            </p>
 
             <div id="seasonContent" style="margin-top: 1rem; min-height: 400px;"></div>
         </div>
@@ -54,19 +68,17 @@
             const season = select.value;
 
             if (!season) {
-                if (placeholder) placeholder.style.display = 'block';
+                placeholder.style.display = 'block';
                 contentDiv.innerHTML = '';
                 return;
             }
 
-            if (placeholder) placeholder.style.display = 'none';
+            placeholder.style.display = 'none';
             contentDiv.innerHTML = '<p style="color: #ffcc00;">Loading Season ' + season + '...</p>';
 
             try {
-                // Aggressive cache-busting
+                // Aggressive cache-busting to ensure fresh content every time
                 const cacheBuster = Date.now() + Math.random();
-                console.log(`Fetching season ${season} with cache-buster: ${cacheBuster}`);
-
                 const response = await fetch(`seasons/season${season}.html?cb=${cacheBuster}`, {
                     cache: 'no-store',
                     headers: {
@@ -76,26 +88,16 @@
                     }
                 });
 
-                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
 
                 const html = await response.text();
-                console.log(`Fetched season ${season} (length: ${html.length} chars)`);
-
-                // Update content
                 contentDiv.innerHTML = html;
-                console.log(`Content updated for season ${season}`);
-
             } catch (error) {
-                console.error('Fetch error:', error);
-                contentDiv.innerHTML = `<p style="color: #ff6347;">Error loading Season ${season}: ${error.message}. Check console (F12) for details.</p>`;
+                contentDiv.innerHTML = `<p style="color: #ff6347;">Error loading Season ${season}: ${error.message}.<br>Make sure seasons/season${season}.html exists.</p>`;
             }
         }
-
-        // Auto-load Season 1 on page open (optional – remove if not wanted)
-        window.addEventListener('load', () => {
-            document.getElementById('seasonSelect').value = '1';
-            loadSeason();
-        });
     </script>
 </body>
 </html>
