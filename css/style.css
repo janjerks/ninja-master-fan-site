@@ -1,4 +1,4 @@
-/* Base */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -31,7 +31,7 @@ h2 {
     margin: 2.5rem 0 1rem;
 }
 
-/* Navigation - Simple top bar */
+/* Navigation */
 nav {
     background: #1a1a1a;
     padding: 1.2rem;
@@ -40,19 +40,71 @@ nav {
     position: sticky;
     top: 0;
     z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
 }
 
 nav a {
     color: #ffcc00;
     text-decoration: none;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: bold;
-    margin: 0 2rem;
     transition: color 0.3s;
 }
 
 nav a:hover {
     color: #ff4500;
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    color: #ffcc00;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0 1.5rem;
+    transition: color 0.3s;
+}
+
+.dropbtn:hover {
+    color: #ff4500;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #1a1a1a;
+    min-width: 240px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+    border: 1px solid #444;
+    border-radius: 6px;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+}
+
+.dropdown-content a {
+    color: #e0e0e0;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 1.1rem;
+}
+
+.dropdown-content a:hover {
+    background-color: #333;
+    color: #ffcc00;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 /* Container */
@@ -62,7 +114,7 @@ nav a:hover {
     padding: 0 1.5rem;
 }
 
-/* Hero Section - Welcome area */
+/* Hero */
 .hero {
     text-align: center;
     padding: 5rem 1rem 4rem;
@@ -81,7 +133,7 @@ nav a:hover {
     margin: 1.5rem auto;
 }
 
-/* Buttons - Big, red/orange like "Play Now" */
+/* Buttons */
 .btn {
     display: inline-block;
     background: #ff4500;
@@ -91,7 +143,7 @@ nav a:hover {
     font-weight: bold;
     text-decoration: none;
     border-radius: 6px;
-    margin: 1.5rem 0.5rem;
+    margin: 1rem 0.8rem;
     box-shadow: 0 4px 10px rgba(255,69,0,0.5);
     transition: all 0.3s;
 }
@@ -102,7 +154,7 @@ nav a:hover {
     box-shadow: 0 8px 20px rgba(255,69,0,0.7);
 }
 
-/* Content Sections/Cards */
+/* Sections */
 .section {
     background: #1a1a1a;
     border: 1px solid #333;
@@ -112,7 +164,7 @@ nav a:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
-/* Table for Guild Wars */
+/* Table (for guild-wars.html if you use one) */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -134,7 +186,7 @@ tr:nth-child(even) {
     background: #222;
 }
 
-/* Countdown Timer */
+/* Countdown */
 #countdown {
     font-size: 3.2rem;
     color: #ffcc00;
@@ -153,23 +205,19 @@ footer {
     font-size: 0.95rem;
 }
 
-/* Responsive adjustments for mobile */
+/* Mobile */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 3rem;
+    h1 { font-size: 3rem; }
+    nav {
+        gap: 1rem;
+        padding: 1rem 0.5rem;
     }
-
-    nav a {
-        margin: 0 1rem;
-        font-size: 1.2rem;
+    nav a, .dropbtn {
+        font-size: 1.1rem;
     }
-
-    .hero {
-        padding: 4rem 1rem 3rem;
-    }
-
+    .hero { padding: 4rem 1rem 3rem; }
     .btn {
         font-size: 1.2rem;
-        padding: 0.8rem 2rem;
+        padding: 0.8rem 1.8rem;
     }
 }
