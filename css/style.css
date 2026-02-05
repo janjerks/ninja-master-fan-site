@@ -1,5 +1,10 @@
 /* Base */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     background: #0d0d0d;
@@ -7,23 +12,24 @@ body {
     line-height: 1.6;
 }
 
-/* Overlay if using faint background image later */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6); /* darken if adding ninja BG */
-    z-index: -1;
-}
-
 /* Typography */
 h1, h2, h3 {
-    font-family: 'Arial Black', 'Impact', sans-serif; /* bold, game-like */
+    font-family: 'Arial Black', 'Impact', sans-serif;
     color: #ffffff;
     text-shadow: 2px 2px 4px #000;
 }
-h1 { font-size: 3.8rem; text-align: center; margin: 3rem 0 1rem; }
-h2 { font-size: 2.8rem; color: #ff4500; margin: 2.5rem 0 1rem; }
+
+h1 {
+    font-size: 3.8rem;
+    text-align: center;
+    margin: 3rem 0 1rem;
+}
+
+h2 {
+    font-size: 2.8rem;
+    color: #ff4500;
+    margin: 2.5rem 0 1rem;
+}
 
 /* Navigation - Simple top bar */
 nav {
@@ -35,6 +41,7 @@ nav {
     top: 0;
     z-index: 10;
 }
+
 nav a {
     color: #ffcc00;
     text-decoration: none;
@@ -43,7 +50,10 @@ nav a {
     margin: 0 2rem;
     transition: color 0.3s;
 }
-nav a:hover { color: #ff4500; }
+
+nav a:hover {
+    color: #ff4500;
+}
 
 /* Container */
 .container {
@@ -52,14 +62,24 @@ nav a:hover { color: #ff4500; }
     padding: 0 1.5rem;
 }
 
-/* Hero Section - Mimic welcome + play/trailer area */
+/* Hero Section - Welcome area */
 .hero {
     text-align: center;
     padding: 5rem 1rem 4rem;
     background: linear-gradient(to bottom, #1a0000, #0d0d0d);
 }
-.hero h1 { font-size: 4.5rem; color: #ffffff; text-shadow: 0 0 15px #ff4500; }
-.hero p { font-size: 1.4rem; max-width: 800px; margin: 1.5rem auto; }
+
+.hero h1 {
+    font-size: 4.5rem;
+    color: #ffffff;
+    text-shadow: 0 0 15px #ff4500;
+}
+
+.hero p {
+    font-size: 1.4rem;
+    max-width: 800px;
+    margin: 1.5rem auto;
+}
 
 /* Buttons - Big, red/orange like "Play Now" */
 .btn {
@@ -75,13 +95,14 @@ nav a:hover { color: #ff4500; }
     box-shadow: 0 4px 10px rgba(255,69,0,0.5);
     transition: all 0.3s;
 }
+
 .btn:hover {
     background: #ff6347;
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(255,69,0,0.7);
 }
 
-/* Content Cards/Sections */
+/* Content Sections/Cards */
 .section {
     background: #1a1a1a;
     border: 1px solid #333;
@@ -97,15 +118,23 @@ table {
     border-collapse: collapse;
     margin: 1.5rem 0;
 }
+
 th, td {
     padding: 1rem;
     border: 1px solid #444;
     text-align: left;
 }
-th { background: #222; color: #ffcc00; }
-tr:nth-child(even) { background: #222; }
 
-/* Countdown */
+th {
+    background: #222;
+    color: #ffcc00;
+}
+
+tr:nth-child(even) {
+    background: #222;
+}
+
+/* Countdown Timer */
 #countdown {
     font-size: 3.2rem;
     color: #ffcc00;
@@ -124,9 +153,23 @@ footer {
     font-size: 0.95rem;
 }
 
-/* Responsive */
+/* Responsive adjustments for mobile */
 @media (max-width: 768px) {
-    h1 { font-size: 3rem; }
-    nav a { margin: 0 1rem; font-size: 1.2rem; }
-    .hero { padding: 4rem 1rem 3rem; }
+    h1 {
+        font-size: 3rem;
+    }
+
+    nav a {
+        margin: 0 1rem;
+        font-size: 1.2rem;
+    }
+
+    .hero {
+        padding: 4rem 1rem 3rem;
+    }
+
+    .btn {
+        font-size: 1.2rem;
+        padding: 0.8rem 2rem;
+    }
 }
