@@ -1,0 +1,133 @@
+/* Reset & Base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #0a0a0a url('https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* Overlay for readability (dark semi-transparent) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: -1;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: 'Teko', sans-serif; /* or 'Orbitron' for more futuristic ninja feel */
+    color: #ffcc00; /* gold */
+    text-shadow: 0 0 10px #c00, 0 0 20px #c00;
+    letter-spacing: 2px;
+}
+h1 { font-size: 3.5rem; text-align: center; margin: 2rem 0; }
+h2 { font-size: 2.5rem; border-bottom: 2px solid #c00; padding-bottom: 0.5rem; margin: 2rem 0 1rem; }
+
+/* Navigation – Top Bar (like many game sites) */
+nav {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid #c00;
+}
+nav a {
+    color: #ffcc00;
+    text-decoration: none;
+    margin: 0 1.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+nav a:hover { color: #ff0000; text-shadow: 0 0 15px #ff0000; }
+
+/* Container for content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Hero Section (top banner – welcome like ninjamaster.online) */
+.hero {
+    text-align: center;
+    padding: 6rem 1rem 4rem;
+    background: linear-gradient(to bottom, rgba(200,0,0,0.2), transparent);
+}
+.hero h1 { font-size: 4.5rem; margin-bottom: 1rem; }
+
+/* Cards/Sections (for guides, guild wars history, etc.) */
+.card {
+    background: rgba(30, 30, 30, 0.85);
+    border: 1px solid #c00;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 0 20px rgba(200,0,0,0.3);
+    transition: transform 0.3s;
+}
+.card:hover { transform: translateY(-10px); }
+
+/* Buttons (red glow style) */
+.btn {
+    display: inline-block;
+    background: #c00;
+    color: white;
+    padding: 0.8rem 1.8rem;
+    margin: 1rem 0.5rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 0 15px #c00;
+    transition: all 0.3s;
+}
+.btn:hover {
+    background: #ff0000;
+    box-shadow: 0 0 25px #ff0000;
+}
+
+/* Table for Guild War History */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+}
+th, td {
+    padding: 1rem;
+    border: 1px solid #444;
+    text-align: center;
+}
+th { background: #222; color: #ffcc00; }
+tr:nth-child(even) { background: #1a1a1a; }
+
+/* Countdown (big & centered) */
+#countdown {
+    font-size: 3rem;
+    color: #ffcc00;
+    text-align: center;
+    margin: 2rem 0;
+    text-shadow: 0 0 20px #c00;
+}
+
+/* Footer */
+footer {
+    background: rgba(0,0,0,0.9);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+    border-top: 2px solid #c00;
+    font-size: 0.9rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    h1 { font-size: 2.8rem; }
+    nav a { margin: 0 0.8rem; font-size: 1.1rem; }
+    .hero { padding: 4rem 1rem 3rem; }
+}
