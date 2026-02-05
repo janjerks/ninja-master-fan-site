@@ -33,12 +33,12 @@
                 <option value="">-- Choose a Season --</option>
                 <option value="1">Season 1</option>
                 <option value="2">Season 2</option>
-                <!-- Add more here later -->
+                <!-- Add more seasons here as needed -->
             </select>
 
-            <div id="seasonContent" style="margin-top: 2rem; min-height: 400px;">
-                <p id="placeholder">Select a season to view rankings, winners, and rewards.</p>
-            </div>
+            <p id="placeholder" style="margin-top: 2rem;">Select a season to view rankings, winners, and rewards.</p>
+
+            <div id="seasonContent" style="margin-top: 1rem; min-height: 400px;"></div>
         </div>
     </div>
 
@@ -54,21 +54,21 @@
             const season = select.value;
 
             if (!season) {
-                placeholder.style.display = 'block';
+                if (placeholder) placeholder.style.display = 'block';
                 contentDiv.innerHTML = '';
                 return;
             }
 
-            placeholder.style.display = 'none';
+            if (placeholder) placeholder.style.display = 'none';
             contentDiv.innerHTML = '<p style="color: #ffcc00;">Loading Season ' + season + '...</p>';
 
             try {
-                // Very aggressive cache busting: timestamp + random
+                // Aggressive cache-busting
                 const cacheBuster = Date.now() + Math.random();
                 console.log(`Fetching season ${season} with cache-buster: ${cacheBuster}`);
 
                 const response = await fetch(`seasons/season${season}.html?cb=${cacheBuster}`, {
-                    cache: 'no-store',          // Tell browser: do NOT cache this
+                    cache: 'no-store',
                     headers: {
                         'Cache-Control': 'no-cache, no-store, must-revalidate',
                         'Pragma': 'no-cache',
@@ -76,26 +76,22 @@
                     }
                 });
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
                 const html = await response.text();
-                console.log(`Fetched content for season ${season} (length: ${html.length} chars)`);
+                console.log(`Fetched season ${season} (length: ${html.length} chars)`);
 
-                // Small delay + force update
-                setTimeout(() => {
-                    contentDiv.innerHTML = html;
-                    console.log(`Content updated for season ${season}`);
-                }, 100);  // tiny delay helps some browsers re-render
+                // Update content
+                contentDiv.innerHTML = html;
+                console.log(`Content updated for season ${season}`);
 
             } catch (error) {
                 console.error('Fetch error:', error);
-                contentDiv.innerHTML = `<p style="color: #ff6347;">Error loading Season ${season}: ${error.message}.<br>Check console (F12) for details.</p>`;
+                contentDiv.innerHTML = `<p style="color: #ff6347;">Error loading Season ${season}: ${error.message}. Check console (F12) for details.</p>`;
             }
         }
 
-        // Optional: auto-load first season on page open
+        // Auto-load Season 1 on page open (optional – remove if not wanted)
         window.addEventListener('load', () => {
             document.getElementById('seasonSelect').value = '1';
             loadSeason();
