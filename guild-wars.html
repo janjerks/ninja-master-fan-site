@@ -3,101 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guild War Results & Rewards – Ninja Master Fan Site</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Guild Wars History - Ninja Master Fan Site</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --primary: #ff4500;
+            --primary-hover: #ff6600;
+            --gold: #ffcc00;
+            --dark-bg: #0a0a0a;
+            --nav-bg: rgba(10,10,10,0.88);
+            --card-bg: #111115;
+            --text: #e8e8e8;
+            --text-light: #bbbbbb;
+            --border: #222226;
+            --glow: rgba(255,69,0,0.35);
+        }
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-shadow: 0 0 20px var(--glow);
+        }
+        nav {
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            border-bottom: none;
+        }
+        .nav-logo-wrapper {
+            margin-right: 1.5rem;
+        }
+        .nav-logo {
+            height: 48px;
+            width: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+        .nav-logo:hover {
+            transform: scale(1.1);
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.6rem;
+        }
+        nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffffff;
+        }
+        main {
+            padding-top: 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 120px 2rem 4rem;
+        }
+        select {
+            background: var(--card-bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 0.8rem 1.2rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: rgba(255,69,0,0.15);
+            color: var(--gold);
+        }
+        tr:hover {
+            background: rgba(255,69,0,0.1);
+        }
+        .champion {
+            font-weight: bold;
+            color: var(--gold);
+        }
+        footer {
+            background: #000;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 2px solid var(--gold);
+        }
+        footer p {
+            margin: 0.6rem 0;
+            opacity: 0.85;
+        }
+        @media (max-width: 768px) {
+            nav { padding: 0.8rem 1rem; flex-wrap: wrap; }
+            .nav-links { justify-content: center; }
+            .nav-logo { height: 50px; width: auto; }
+            main { padding-top: 100px; }
+        }
+    </style>
 </head>
 <body>
+
     <nav>
-        <a href="index.html">Home</a>
-        <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank">Play</a>
-        <a href="https://www.facebook.com/profile.php?id=100083121342903" target="_blank">News</a>
-        <a href="https://www.facebook.com/groups/ninjamasterashinobisaga" target="_blank">Community</a>
-        <a href="guild-wars.html">Guild War Results and Rewards</a>
-        <a href="https://nm-kekkai-solver.netlify.app/" target="_blank">Kekkai Solver and Simulator</a>
-        <a href="https://nm-stats-simulator.vercel.app/" target="_blank">Stats Simulator</a>
-        <a href="https://ninjamaster.rpg-board.net/f3-guides" target="_blank">Guides</a>
-        <a href="https://ninjamaster.rpg-board.net/" target="_blank">Forum</a>
-        <a href="https://ninjamaster.rpg-board.net/f5-support-questions" target="_blank">Support</a>
+        <a href="index.html">
+            <img src="/ninja-master-fan-site/images/ninja-master-icon.png" alt="Ninja Master Icon" class="nav-logo">
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank">Play Now</a>
+            <a href="https://www.facebook.com/profile.php?id=100083121342903" target="_blank">News</a>
+            <a href="https://www.facebook.com/groups/ninjamasterashinobisaga" target="_blank">Community</a>
+            <a href="guild-wars.html">Guild Wars History</a>
+            <a href="https://nm-kekkai-solver.netlify.app/" target="_blank">Kekkai Solver</a>
+            <a href="https://nm-stats-simulator.vercel.app/" target="_blank">Stats Simulator</a>
+            <a href="https://ninjamaster.rpg-board.net/f3-guides" target="_blank">Guides</a>
+            <a href="https://ninjamaster.rpg-board.net/" target="_blank">Forum</a>
+            <a href="https://ninjamaster.rpg-board.net/f5-support-questions" target="_blank">Support</a>
+        </div>
     </nav>
 
-    <div class="hero">
-        <h1>Guild War Results & Rewards</h1>
-        <p>View historical guild rankings, winners, and rewards for each season. Select a season below.</p>
-    </div>
+    <main>
+        <h1>Guild Wars History</h1>
+        <p>View complete rankings, champions, and rewards from all seasons.</p>
 
-    <div class="container">
-        <div class="section">
-            <h2>Select Season</h2>
-            <select id="seasonSelect" onchange="loadSeason()">
-                <option value="">Choose a Season</option>
-                <option value="1">Season 1</option>
-                <option value="2">Season 2</option>
-                <option value="3">Season 3</option>
-                <option value="4">Season 4</option>
-                <option value="5">Season 5</option>
-                <option value="6">Season 6</option>
-                <option value="7">Season 7</option>
-                <option value="8">Season 8</option>
-                <option value="9">Season 9</option>
-                <option value="10">Season 10</option>
-                <option value="11">Season 11</option>
-                <option value="12">Season 12</option>
-                <option value="13">Season 13</option>
-                <!-- To add Season 14+ later, just insert lines like this: -->
-                <!-- <option value="14">Season 14</option> -->
-            </select>
+        <select id="seasonSelect">
+            <option value="">Choose a Season</option>
+            <option value="1">Season 1</option>
+            <option value="2">Season 2</option>
+            <!-- Add all your seasons here -->
+            <option value="13">Season 13</option>
+        </select>
 
-            <p id="placeholder" style="margin-top: 2rem; color: #aaa;">
-                Select a season above to view rankings and rewards.
-            </p>
-
-            <div id="seasonContent" style="margin-top: 1rem; min-height: 400px;"></div>
+        <div id="seasonContent">
+            <p>Select a season above to view results.</p>
         </div>
-    </div>
+    </main>
 
     <footer>
-        <p>Fan-made site for Ninja Master: A Shinobi Saga | Not official | © 2026 John</p>
+        <p>Fan-made site for Ninja Master: A Shinobi Saga • Not official • © 2026 John</p>
+        <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.7;">
+            Built with passion for the shinobi community • Hosted on GitHub Pages
+        </p>
     </footer>
 
     <script>
-        async function loadSeason() {
-            const select = document.getElementById('seasonSelect');
-            const contentDiv = document.getElementById('seasonContent');
-            const placeholder = document.getElementById('placeholder');
-            const season = select.value;
+        const seasonSelect = document.getElementById('seasonSelect');
+        const seasonContent = document.getElementById('seasonContent');
 
+        seasonSelect.addEventListener('change', async (e) => {
+            const season = e.target.value;
             if (!season) {
-                placeholder.style.display = 'block';
-                contentDiv.innerHTML = '';
+                seasonContent.innerHTML = '<p>Select a season above to view results.</p>';
                 return;
             }
 
-            placeholder.style.display = 'none';
-            contentDiv.innerHTML = '<p style="color: #ffcc00;">Loading Season ' + season + '...</p>';
+            seasonContent.innerHTML = '<p>Loading Season ' + season + '...</p>';
 
             try {
-                // Aggressive cache-busting to ensure fresh content every time
-                const cacheBuster = Date.now() + Math.random();
-                const response = await fetch(`seasons/season${season}.html?cb=${cacheBuster}`, {
-                    cache: 'no-store',
-                    headers: {
-                        'Cache-Control': 'no-cache, no-store, must-revalidate',
-                        'Pragma': 'no-cache',
-                        'Expires': '0'
-                    }
-                });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-
+                const response = await fetch(`seasons/season${season}.html?cb=${Date.now()}`);
+                if (!response.ok) throw new Error('Season not found');
                 const html = await response.text();
-                contentDiv.innerHTML = html;
-            } catch (error) {
-                contentDiv.innerHTML = `<p style="color: #ff6347;">Error loading Season ${season}: ${error.message}.<br>Make sure seasons/season${season}.html exists.</p>`;
+                seasonContent.innerHTML = html;
+            } catch (err) {
+                seasonContent.innerHTML = '<p style="color: #ff4500;">Error loading season. Please try again.</p>';
             }
-        }
+        });
     </script>
+
 </body>
 </html>
