@@ -44,8 +44,12 @@
             align-items: center;
         }
         .nav-logo {
-            height: 40px;
+            height: 80px;          /* 2× bigger than before (was 40px) */
             margin-right: 1.5rem;
+            transition: transform 0.3s;
+        }
+        .nav-logo:hover {
+            transform: scale(1.1); /* subtle hover zoom effect */
         }
         nav a {
             color: var(--gold);
@@ -193,6 +197,7 @@
             .hero h1 { font-size: 4rem; }
             .hero p { font-size: 1.4rem; }
             .btn-primary, .btn-secondary { padding: 1.1rem 2.5rem; font-size: 1.25rem; }
+            .nav-logo { height: 60px; } /* Slightly smaller on mobile */
             nav { padding: 1rem; flex-wrap: wrap; }
             .nav-links { justify-content: center; }
         }
@@ -201,7 +206,9 @@
 <body>
 
     <nav>
-        <img src="/ninja-master-fan-site/images/ninja-master-icon.png" alt="Ninja Master Icon" class="nav-logo">
+        <a href="index.html">
+            <img src="/ninja-master-fan-site/images/ninja-master-icon.png" alt="Ninja Master Icon" class="nav-logo">
+        </a>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank">Play Now</a>
