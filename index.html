@@ -7,100 +7,169 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Quick ninja-themed overrides – add to style.css later if you prefer */
         :root {
-            --ninja-red: #c8102e;
-            --ninja-gold: #ffd700;
-            --dark-bg: #0a0a0a;
-            --card-bg: #111111;
+            --primary: #ff4500;          /* Ninja Master orange-red */
+            --primary-hover: #ff6600;
+            --gold: #ffcc00;             /* Gold highlights */
+            --dark-bg: #0f0f0f;          /* Very dark background */
+            --card-bg: #1a1a1a;
+            --text: #e0e0e0;
+            --text-light: #aaaaaa;
+            --border: #333333;
         }
         body {
+            margin: 0;
             font-family: 'Roboto', sans-serif;
             background: var(--dark-bg);
-            color: #e0e0e0;
+            color: var(--text);
+            line-height: 1.6;
         }
         h1, h2 {
             font-family: 'Orbitron', sans-serif;
             text-transform: uppercase;
             letter-spacing: 2px;
+            color: #ffffff;
+        }
+        nav {
+            background: rgba(15,15,15,0.92);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.2rem 2rem;
+            border-bottom: 2px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+        nav a {
+            color: var(--gold);
+            text-decoration: none;
+            margin: 0 1.3rem;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--primary);
         }
         .hero {
-            min-height: 90vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1518709268805-4e9042af5921?w=1600&q=80') center/cover no-repeat;
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.92)),
+                        url('https://images.unsplash.com/photo-1518709268805-4e9042af5921?w=1600&q=80') center/cover no-repeat fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 2rem;
+            padding: 0 2rem;
         }
         .hero-content {
-            max-width: 900px;
+            max-width: 1100px;
         }
         .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1rem;
-            color: var(--ninja-gold);
-            text-shadow: 0 0 20px rgba(255,215,0,0.6);
+            font-size: 5.8rem;
+            margin: 0 0 1.2rem;
+            color: #ffffff;
+            text-shadow: 0 0 35px rgba(255,69,0,0.7);
         }
         .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 2.5rem;
-            color: #d0d0d0;
+            font-size: 1.7rem;
+            max-width: 880px;
+            margin: 0 auto 3.5rem;
+            color: var(--text);
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+            flex-wrap: wrap;
         }
         .btn-primary {
-            background: var(--ninja-red);
+            background: var(--primary);
             color: white;
-            padding: 1rem 2.5rem;
-            font-size: 1.3rem;
+            padding: 1.3rem 3.2rem;
+            font-size: 1.45rem;
+            font-weight: 700;
             border: none;
-            border-radius: 6px;
-            margin: 0.8rem;
+            border-radius: 8px;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.35s;
+            box-shadow: 0 8px 25px rgba(255,69,0,0.45);
         }
         .btn-primary:hover {
-            background: #e63946;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(198,16,46,0.5);
+            background: var(--primary-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 18px 40px rgba(255,69,0,0.6);
         }
-        .features {
-            padding: 6rem 2rem;
-            background: var(--card-bg);
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 1.3rem 3.2rem;
+            font-size: 1.45rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.35s;
         }
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            max-width: 1200px;
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: #000;
+            box-shadow: 0 10px 30px rgba(255,204,0,0.4);
+        }
+        .section {
+            padding: 9rem 2rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2.8rem;
+        }
         .feature-card {
-            background: #161616;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 2.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3.2rem 2.2rem;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.4s ease;
         }
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(198,16,46,0.25);
+            transform: translateY(-14px);
+            box-shadow: 0 25px 55px rgba(255,69,0,0.25);
+            border-color: var(--primary);
         }
         .feature-icon {
-            font-size: 3.5rem;
-            color: var(--ninja-gold);
-            margin-bottom: 1.2rem;
+            font-size: 4.5rem;
+            color: var(--gold);
+            margin-bottom: 1.8rem;
         }
         .about-section {
-            padding: 6rem 2rem;
             background: linear-gradient(to bottom, #0a0a0a, #111);
             text-align: center;
         }
+        .about-section p {
+            max-width: 950px;
+            margin: 2.5rem auto;
+            font-size: 1.35rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
         footer {
             background: #000;
-            padding: 3rem 2rem;
+            padding: 5rem 2rem;
             text-align: center;
-            border-top: 3px solid var(--ninja-red);
+            border-top: 5px solid var(--primary);
+        }
+        footer p {
+            margin: 0.8rem 0;
+            opacity: 0.85;
+            font-size: 1.05rem;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 4rem; }
+            .hero p { font-size: 1.4rem; }
+            .btn-primary, .btn-secondary { padding: 1.1rem 2.5rem; font-size: 1.25rem; }
         }
     </style>
 </head>
@@ -111,7 +180,7 @@
         <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank">Play Now</a>
         <a href="https://www.facebook.com/profile.php?id=100083121342903" target="_blank">News</a>
         <a href="https://www.facebook.com/groups/ninjamasterashinobisaga" target="_blank">Community</a>
-        <a href="guild-wars.html">Guild War Results</a>
+        <a href="guild-wars.html">Guild Wars History</a>
         <a href="https://nm-kekkai-solver.netlify.app/" target="_blank">Kekkai Solver</a>
         <a href="https://nm-stats-simulator.vercel.app/" target="_blank">Stats Simulator</a>
         <a href="https://ninjamaster.rpg-board.net/f3-guides" target="_blank">Guides</a>
@@ -121,58 +190,57 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Welcome, Shinobi</h1>
-            <p>Master the way of the ninja in Ninja Master: A Shinobi Saga. Hone your skills, conquer guild wars, and become the ultimate shinobi master.</p>
-            <div>
-                <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank" class="btn-primary">Play Now</a>
-                <a href="guild-wars.html" class="btn-primary">Guild Wars History</a>
+            <h1>Enter the Shinobi World</h1>
+            <p>Master ancient jutsu, lead your guild to victory, and rise through the ranks in Ninja Master: A Shinobi Saga.</p>
+            <div class="btn-group">
+                <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank" class="btn-primary">Play Free Now</a>
+                <a href="guild-wars.html" class="btn-secondary">Guild War History</a>
             </div>
         </div>
     </section>
 
-    <section class="features">
-        <div class="feature-grid">
+    <section class="section features">
+        <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">⚔️</div>
-                <h3>Guild War History</h3>
-                <p>Complete rankings, winners, and rewards from Season 1 to Season 13. See who dominated the battlefield.</p>
-                <a href="guild-wars.html" class="btn-primary" style="font-size: 1.1rem; padding: 0.8rem 1.8rem;">View All Seasons</a>
+                <h3>Epic Guild Wars</h3>
+                <p>Full history from Season 1 to Season 13 – champions, rankings, and massive rewards.</p>
+                <a href="guild-wars.html" class="btn-primary" style="margin-top: 1.8rem;">Explore All Seasons</a>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">🧩</div>
-                <h3>Community Tools</h3>
-                <p>Kekkai Solver & Simulator and Stats Simulator – powerful tools built by the community.</p>
-                <div style="margin-top: 1rem;">
-                    <a href="https://nm-kekkai-solver.netlify.app/" target="_blank" class="btn-primary" style="font-size: 1.1rem; padding: 0.8rem 1.8rem;">Kekkai Solver</a>
-                    <a href="https://nm-stats-simulator.vercel.app/" target="_blank" class="btn-primary" style="font-size: 1.1rem; padding: 0.8rem 1.8rem; margin-left: 0.8rem;">Stats Simulator</a>
+                <div class="feature-icon">🧰</div>
+                <h3>Ultimate Tools</h3>
+                <p>Kekkai Solver, Stats Simulator, and player guides – sharpen your skills and dominate.</p>
+                <div style="margin-top: 1.8rem;">
+                    <a href="https://nm-kekkai-solver.netlify.app/" target="_blank" class="btn-primary">Kekkai Solver</a>
+                    <a href="https://nm-stats-simulator.vercel.app/" target="_blank" class="btn-primary" style="margin-left: 1rem;">Stats Simulator</a>
                 </div>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">📜</div>
-                <h3>Community & Guides</h3>
-                <p>Join the official group, read player guides, ask questions, and connect with shinobi worldwide.</p>
-                <div style="margin-top: 1rem;">
-                    <a href="https://www.facebook.com/groups/ninjamasterashinobisaga" target="_blank" class="btn-primary" style="font-size: 1.1rem; padding: 0.8rem 1.8rem;">Join Community</a>
-                </div>
+                <div class="feature-icon">🌑</div>
+                <h3>Shinobi Community</h3>
+                <p>Join thousands of players, share strategies, stay updated, and forge alliances.</p>
+                <a href="https://www.facebook.com/groups/ninjamasterashinobisaga" target="_blank" class="btn-primary" style="margin-top: 1.8rem;">Join the Group</a>
             </div>
         </div>
     </section>
 
-    <section class="about-section">
-        <div class="container">
-            <h2>About Ninja Master</h2>
-            <p style="max-width: 800px; margin: 2rem auto; font-size: 1.2rem; line-height: 1.7;">
-                Embark on a nostalgic journey in a true ninja RPG. Master jutsu, join powerful guilds, dominate live PvP, climb worldwide leaderboards, and participate in seasonal events — all at 60FPS with smooth mobile controls. Play for free, earn rewards without spending, and become the next Ninja Master.
-            </p>
-        </div>
+    <section class="section about-section">
+        <h2>The Path of the Ninja</h2>
+        <p>
+            Ninja Master: A Shinobi Saga brings true ninja action to mobile – 60FPS gameplay, revamped touch controls, free-to-play progression, live PvP, seasonal events, worldwide leaderboards, and massive guild wars.
+        </p>
+        <p style="margin-top: 2.2rem;">
+            This fan site is your complete resource: full guild war history, powerful community tools, guides, and a thriving shinobi community.
+        </p>
     </section>
 
     <footer>
         <p>Fan-made site for Ninja Master: A Shinobi Saga • Not official • © 2026 John</p>
-        <p style="margin-top: 0.8rem; font-size: 0.9rem; opacity: 0.7;">
-            Hosted on GitHub Pages • Built with passion for the shinobi community
+        <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.7;">
+            Built with passion for the shinobi world • Hosted on GitHub Pages
         </p>
     </footer>
 
