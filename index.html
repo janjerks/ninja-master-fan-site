@@ -13,9 +13,9 @@
             --gold: #ffcc00;
             --dark-bg: #0f0f0f;
             --card-bg: #1a1a1a;
-            --text: #f0f0f0;
-            --text-light: #cccccc;
-            --border: #444444;
+            --text: #e0e0e0;
+            --text-light: #aaaaaa;
+            --border: #333333;
         }
         body {
             margin: 0;
@@ -37,9 +37,15 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            padding: 1.2rem 2rem;
+            padding: 1rem 2rem;
             border-bottom: 2px solid var(--primary);
             box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo {
+            height: 40px;
+            margin-right: 1.5rem;
         }
         nav a {
             color: var(--gold);
@@ -52,10 +58,16 @@
         nav a:hover {
             color: var(--primary);
         }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
         .hero {
             height: 100vh;
-            min-height: 720px;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+            min-height: 700px;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
                         url('/ninja-master-fan-site/images/hero-bg.png') center/cover no-repeat fixed;
             position: relative;
             display: flex;
@@ -80,7 +92,7 @@
             font-size: 5.8rem;
             margin: 0 0 1.2rem;
             color: #ffffff;
-            text-shadow: 0 0 40px rgba(255,69,0,0.8), 0 0 80px rgba(255,215,0,0.4);
+            text-shadow: 0 0 40px rgba(255,69,0,0.8);
         }
         .hero p {
             font-size: 1.75rem;
@@ -181,22 +193,27 @@
             .hero h1 { font-size: 4rem; }
             .hero p { font-size: 1.4rem; }
             .btn-primary, .btn-secondary { padding: 1.1rem 2.5rem; font-size: 1.25rem; }
+            nav { padding: 1rem; flex-wrap: wrap; }
+            .nav-links { justify-content: center; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html">Home</a>
-        <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank">Play Now</a>
-        <a href="https://www.facebook.com/profile.php?id=100083121342903" target="_blank">News</a>
-        <a href="https://www.facebook.com/groups/ninjamasterashinobisaga" target="_blank">Community</a>
-        <a href="guild-wars.html">Guild Wars History</a>
-        <a href="https://nm-kekkai-solver.netlify.app/" target="_blank">Kekkai Solver</a>
-        <a href="https://nm-stats-simulator.vercel.app/" target="_blank">Stats Simulator</a>
-        <a href="https://ninjamaster.rpg-board.net/f3-guides" target="_blank">Guides</a>
-        <a href="https://ninjamaster.rpg-board.net/" target="_blank">Forum</a>
-        <a href="https://ninjamaster.rpg-board.net/f5-support-questions" target="_blank">Support</a>
+        <img src="/ninja-master-fan-site/images/ninja-master-icon.png" alt="Ninja Master Icon" class="nav-logo">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank">Play Now</a>
+            <a href="https://www.facebook.com/profile.php?id=100083121342903" target="_blank">News</a>
+            <a href="https://www.facebook.com/groups/ninjamasterashinobisaga" target="_blank">Community</a>
+            <a href="guild-wars.html">Guild Wars History</a>
+            <a href="https://nm-kekkai-solver.netlify.app/" target="_blank">Kekkai Solver</a>
+            <a href="https://nm-stats-simulator.vercel.app/" target="_blank">Stats Simulator</a>
+            <a href="https://ninjamaster.rpg-board.net/f3-guides" target="_blank">Guides</a>
+            <a href="https://ninjamaster.rpg-board.net/" target="_blank">Forum</a>
+            <a href="https://ninjamaster.rpg-board.net/f5-support-questions" target="_blank">Support</a>
+        </div>
     </nav>
 
     <section class="hero">
