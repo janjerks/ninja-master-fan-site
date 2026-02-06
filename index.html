@@ -3,46 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ninja Master: A Shinobi Saga Fan Site</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Ninja Master: A Shinobi Saga – Fan Community</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Quick ninja-themed overrides – add to style.css later if you prefer */
+        :root {
+            --ninja-red: #c8102e;
+            --ninja-gold: #ffd700;
+            --dark-bg: #0a0a0a;
+            --card-bg: #111111;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--dark-bg);
+            color: #e0e0e0;
+        }
+        h1, h2 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .hero {
+            min-height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1518709268805-4e9042af5921?w=1600&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        .hero-content {
+            max-width: 900px;
+        }
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            color: var(--ninja-gold);
+            text-shadow: 0 0 20px rgba(255,215,0,0.6);
+        }
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            color: #d0d0d0;
+        }
+        .btn-primary {
+            background: var(--ninja-red);
+            color: white;
+            padding: 1rem 2.5rem;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 6px;
+            margin: 0.8rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background: #e63946;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(198,16,46,0.5);
+        }
+        .features {
+            padding: 6rem 2rem;
+            background: var(--card-bg);
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: #161616;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(198,16,46,0.25);
+        }
+        .feature-icon {
+            font-size: 3.5rem;
+            color: var(--ninja-gold);
+            margin-bottom: 1.2rem;
+        }
+        .about-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(to bottom, #0a0a0a, #111);
+            text-align: center;
+        }
+        footer {
+            background: #000;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 3px solid var(--ninja-red);
+        }
+    </style>
 </head>
 <body>
+
     <nav>
         <a href="index.html">Home</a>
-        <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank">Play</a>
+        <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank">Play Now</a>
         <a href="https://www.facebook.com/profile.php?id=100083121342903" target="_blank">News</a>
         <a href="https://www.facebook.com/groups/ninjamasterashinobisaga" target="_blank">Community</a>
-        <a href="guild-wars.html">Guild War Results and Rewards</a>
-        <a href="https://nm-kekkai-solver.netlify.app/" target="_blank">Kekkai Solver and Simulator</a>
+        <a href="guild-wars.html">Guild War Results</a>
+        <a href="https://nm-kekkai-solver.netlify.app/" target="_blank">Kekkai Solver</a>
         <a href="https://nm-stats-simulator.vercel.app/" target="_blank">Stats Simulator</a>
         <a href="https://ninjamaster.rpg-board.net/f3-guides" target="_blank">Guides</a>
         <a href="https://ninjamaster.rpg-board.net/" target="_blank">Forum</a>
         <a href="https://ninjamaster.rpg-board.net/f5-support-questions" target="_blank">Support</a>
     </nav>
 
-    <div class="hero">
-        <h1>Welcome, Shinobi!</h1>
-        <p>Ninja Master: A Shinobi Saga is a nostalgic turn-based ninja RPG. Create your shinobi, master jutsu, join guilds, battle in PvP, and conquer guild wars. This fan site shares guides, guild war history, rewards, and countdown to the next war.</p>
-        
-        <div style="margin: 2rem 0;">
-            <a href="https://nm-kekkai-solver.netlify.app/" target="_blank" class="btn">Kekkai Solver and Simulator</a>
-            <a href="https://nm-stats-simulator.vercel.app/" target="_blank" class="btn">Stats Simulator</a>
-            <a href="guild-wars.html" class="btn">Guild Wars & Countdown</a>
-            <a href="https://ninjamaster.rpg-board.net/f3-guides" target="_blank" class="btn">Community Guides</a>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome, Shinobi</h1>
+            <p>Master the way of the ninja in Ninja Master: A Shinobi Saga. Hone your skills, conquer guild wars, and become the ultimate shinobi master.</p>
+            <div>
+                <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank" class="btn-primary">Play Now</a>
+                <a href="guild-wars.html" class="btn-primary">Guild Wars History</a>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="container">
-        <div class="section">
-            <h2>About the Game</h2>
-            <p>Embark on a nostalgic game that will surely scratch your itch for a true Ninja RPG game! Experience revolutionary features and mechanics as you progress through the game. Feel the buttery smooth gameplay of 60FPS and play like never before with revamped controls to make gaming comfortable on your touch-screen devices!</p>
-            <p>Play for free and earn rewards without the need to spend. Take part in online raids, live PVP, worldwide leaderboards, seasonal events, and much, much more! Explore the mysteries of the Shinobi world, hone your skills, and become the next Ninja Master!</p>
+    <section class="features">
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚔️</div>
+                <h3>Guild War History</h3>
+                <p>Complete rankings, winners, and rewards from Season 1 to Season 13. See who dominated the battlefield.</p>
+                <a href="guild-wars.html" class="btn-primary" style="font-size: 1.1rem; padding: 0.8rem 1.8rem;">View All Seasons</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🧩</div>
+                <h3>Community Tools</h3>
+                <p>Kekkai Solver & Simulator and Stats Simulator – powerful tools built by the community.</p>
+                <div style="margin-top: 1rem;">
+                    <a href="https://nm-kekkai-solver.netlify.app/" target="_blank" class="btn-primary" style="font-size: 1.1rem; padding: 0.8rem 1.8rem;">Kekkai Solver</a>
+                    <a href="https://nm-stats-simulator.vercel.app/" target="_blank" class="btn-primary" style="font-size: 1.1rem; padding: 0.8rem 1.8rem; margin-left: 0.8rem;">Stats Simulator</a>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📜</div>
+                <h3>Community & Guides</h3>
+                <p>Join the official group, read player guides, ask questions, and connect with shinobi worldwide.</p>
+                <div style="margin-top: 1rem;">
+                    <a href="https://www.facebook.com/groups/ninjamasterashinobisaga" target="_blank" class="btn-primary" style="font-size: 1.1rem; padding: 0.8rem 1.8rem;">Join Community</a>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <h2>About Ninja Master</h2>
+            <p style="max-width: 800px; margin: 2rem auto; font-size: 1.2rem; line-height: 1.7;">
+                Embark on a nostalgic journey in a true ninja RPG. Master jutsu, join powerful guilds, dominate live PvP, climb worldwide leaderboards, and participate in seasonal events — all at 60FPS with smooth mobile controls. Play for free, earn rewards without spending, and become the next Ninja Master.
+            </p>
+        </div>
+    </section>
 
     <footer>
-        <p>Fan-made site for Ninja Master: A Shinobi Saga | Not official | © 2026 John</p>
+        <p>Fan-made site for Ninja Master: A Shinobi Saga • Not official • © 2026 John</p>
+        <p style="margin-top: 0.8rem; font-size: 0.9rem; opacity: 0.7;">
+            Hosted on GitHub Pages • Built with passion for the shinobi community
+        </p>
     </footer>
+
 </body>
 </html>
