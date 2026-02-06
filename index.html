@@ -77,8 +77,7 @@
         .hero {
             height: 100vh;
             min-height: 700px;
-            background: 
-                url('/ninja-master-fan-site/images/hero-bg.png') center/cover no-repeat fixed;
+            background: url('/ninja-master-fan-site/images/hero-bg.png') center/cover no-repeat fixed;
             position: relative;
             display: flex;
             align-items: center;
@@ -116,31 +115,39 @@
             gap: 1.8rem;
             flex-wrap: wrap;
         }
-        .btn-image {
-            height: 60px; /* Adjust this height to fit your uploaded button image */
-            width: auto;
-            display: block;
+        .btn-primary, .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.3rem 3.2rem;
+            font-size: 1.45rem;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
             transition: all 0.35s;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
         }
-        .btn-image:hover {
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 8px 25px rgba(255,69,0,0.5);
+        }
+        .btn-primary:hover {
+            background: var(--primary-hover);
             transform: translateY(-5px);
-            box-shadow: 0 18px 40px rgba(255,69,0,0.5);
+            box-shadow: 0 18px 40px rgba(255,69,0,0.7);
         }
         .btn-secondary {
             background: transparent;
             border: 2px solid var(--gold);
             color: var(--gold);
-            padding: 1.3rem 3.2rem;
-            font-size: 1.45rem;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.35s;
         }
         .btn-secondary:hover {
             background: var(--gold);
             color: #000;
+        }
+        .btn-icon {
+            height: 28px;
+            width: auto;
         }
         .section {
             padding: 9rem 2rem;
@@ -195,8 +202,8 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 4rem; }
             .hero p { font-size: 1.4rem; }
-            .btn-image { height: 50px; }
-            .btn-secondary { padding: 1.1rem 2.5rem; font-size: 1.25rem; }
+            .btn-primary, .btn-secondary { padding: 1.1rem 2.5rem; font-size: 1.25rem; }
+            .btn-icon { height: 24px; }
             .nav-logo { height: 50px; width: auto; }
             nav { padding: 0.8rem 1rem; flex-wrap: wrap; }
             .nav-links { justify-content: center; }
@@ -228,8 +235,9 @@
             <h1>Enter the Shinobi World</h1>
             <p>Master ancient jutsu, lead your guild to victory, and rise through the ranks in Ninja Master: A Shinobi Saga.</p>
             <div class="btn-group">
-                <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank">
-                    <img src="/ninja-master-fan-site/images/play-now-button.png" alt="Play Now Button" class="btn-image">
+                <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank" class="btn-primary">
+                    <img src="/ninja-master-fan-site/images/play-now-icon.png" alt="Play Icon" class="btn-icon">
+                    Play Now
                 </a>
                 <a href="guild-wars.html" class="btn-secondary">
                     Guild War History
@@ -238,7 +246,6 @@
         </div>
     </section>
 
-    <!-- rest of the page remains unchanged -->
     <section class="section features">
         <div class="features-grid">
             <div class="feature-card">
