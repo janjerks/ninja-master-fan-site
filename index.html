@@ -37,12 +37,7 @@ border-bottom:none;
 .nav-logo-wrapper { margin-right:1.5rem; }
 .nav-logo { height:48px; width:auto; display:block; transition:transform 0.3s; }
 .nav-logo:hover { transform:scale(1.1); }
-.nav-links {
-display:flex;
-align-items:center;
-flex-wrap:wrap;
-gap:1.6rem;
-}
+.nav-links { display:flex; align-items:center; flex-wrap:wrap; gap:1.6rem; }
 .nav-link {
 color:var(--gold);
 text-decoration:none;
@@ -53,13 +48,10 @@ padding-bottom:6px;
 transition:color 0.3s;
 }
 .nav-link:hover { color:#fff; }
-.nav-link.active {
-color:#fff;
-}
 .nav-link.active::after {
 content:'';
 position:absolute;
-bottom:0;
+bottom:-2px;
 left:0;
 width:100%;
 height:3px;
@@ -210,7 +202,7 @@ const currentFile = window.location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('.nav-link').forEach(link => {
 const href = link.getAttribute('href');
 if (href.startsWith('http') || href.startsWith('//')) return;
-const targetFile = href.split('/').pop();
+const targetFile = href.split('/').pop() || 'index.html';
 if (currentFile === targetFile) {
 link.classList.add('active');
 }

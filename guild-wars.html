@@ -37,12 +37,7 @@ border-bottom:none;
 .nav-logo-wrapper { margin-right:1.5rem; }
 .nav-logo { height:48px; width:auto; display:block; transition:transform 0.3s; }
 .nav-logo:hover { transform:scale(1.1); }
-.nav-links {
-display:flex;
-align-items:center;
-flex-wrap:wrap;
-gap:1.6rem;
-}
+.nav-links { display:flex; align-items:center; flex-wrap:wrap; gap:1.6rem; }
 .nav-link {
 color:var(--gold);
 text-decoration:none;
@@ -152,11 +147,38 @@ const currentFile = window.location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('.nav-link').forEach(link => {
 const href = link.getAttribute('href');
 if (href.startsWith('http') || href.startsWith('//')) return;
-const targetFile = href.split('/').pop();
+const targetFile = href.split('/').pop() || 'index.html';
 if (currentFile === targetFile) {
 link.classList.add('active');
 }
 });
+});
+
+// Season loading
+const seasonSelect = document.getElementById('seasonSelect');
+const seasonContent = document.getElementById('seasonContent');
+
+seasonSelect.addEventListener('change', async (e) => {
+const season = e.target.value;
+if (!season) {
+seasonContent.innerHTML = '<p>Select a season above to view results.</p>';
+return;
+}
+
+seasonContent.innerHTML = '<p>Loading Season ' + season + '...</p>';
+
+try {
+const timestamp = new Date().getTime();
+const response = await fetch(`seasons/season${season}.html?t=${timestamp}`);
+if (!response.ok) {
+throw new Error(`HTTP error! Status: ${response.status}`);
+}
+const html = await response.text();
+seasonContent.innerHTML = html;
+} catch (err) {
+console.error('Season load error:', err);
+seasonContent.innerHTML = '<p style="color:#ff4500;">Error loading season. Please check if season' + season + '.html exists in the seasons folder.</p>';
+}
 });
 </script>
 
