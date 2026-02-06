@@ -89,30 +89,15 @@
             border-radius: 8px;
             margin-bottom: 2rem;
             cursor: pointer;
-        }
-        table {
             width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0;
+            max-width: 400px;
+        }
+        #seasonContent {
             background: var(--card-bg);
+            border: 1px solid var(--border);
             border-radius: 12px;
-            overflow: hidden;
-        }
-        th, td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-        th {
-            background: rgba(255,69,0,0.15);
-            color: var(--gold);
-        }
-        tr:hover {
-            background: rgba(255,69,0,0.1);
-        }
-        .champion {
-            font-weight: bold;
-            color: var(--gold);
+            padding: 2rem;
+            min-height: 400px;
         }
         footer {
             background: #000;
@@ -154,13 +139,22 @@
 
     <main>
         <h1>Guild Wars History</h1>
-        <p>View complete rankings, champions, and rewards from all seasons.</p>
+        <p>View complete rankings, champions, and rewards from all seasons (1–13).</p>
 
         <select id="seasonSelect">
             <option value="">Choose a Season</option>
             <option value="1">Season 1</option>
             <option value="2">Season 2</option>
-            <!-- Add all your seasons here -->
+            <option value="3">Season 3</option>
+            <option value="4">Season 4</option>
+            <option value="5">Season 5</option>
+            <option value="6">Season 6</option>
+            <option value="7">Season 7</option>
+            <option value="8">Season 8</option>
+            <option value="9">Season 9</option>
+            <option value="10">Season 10</option>
+            <option value="11">Season 11</option>
+            <option value="12">Season 12</option>
             <option value="13">Season 13</option>
         </select>
 
