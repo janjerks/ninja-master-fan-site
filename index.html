@@ -37,36 +37,38 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            padding: 1rem 2rem;
-            border-bottom: 2px solid var(--primary);
+            padding: 0.8rem 2rem 0.4rem 2rem; /* Reduced bottom padding → orange bar closer to icon */
+            border-bottom: 4px solid var(--primary); /* Thicker orange bar for visibility */
             box-shadow: 0 4px 15px rgba(0,0,0,0.6);
             display: flex;
             align-items: center;
         }
-        .nav-logo {
-            height: 80px;          /* 2× bigger than before (was 40px) */
+        .nav-logo-wrapper {
             margin-right: 1.5rem;
+        }
+        .nav-logo {
+            height: 80px;
+            display: block;
             transition: transform 0.3s;
         }
         .nav-logo:hover {
-            transform: scale(1.1); /* subtle hover zoom effect */
+            transform: scale(1.1);
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.2rem;
         }
         nav a {
             color: var(--gold);
             text-decoration: none;
-            margin: 0 1.3rem;
             font-weight: 500;
             font-size: 1.05rem;
             transition: color 0.3s;
         }
         nav a:hover {
             color: var(--primary);
-        }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
         }
         .hero {
             height: 100vh;
@@ -197,8 +199,8 @@
             .hero h1 { font-size: 4rem; }
             .hero p { font-size: 1.4rem; }
             .btn-primary, .btn-secondary { padding: 1.1rem 2.5rem; font-size: 1.25rem; }
-            .nav-logo { height: 60px; } /* Slightly smaller on mobile */
-            nav { padding: 1rem; flex-wrap: wrap; }
+            .nav-logo { height: 60px; } /* Slightly smaller on mobile for balance */
+            nav { padding: 0.8rem 1rem; flex-wrap: wrap; }
             .nav-links { justify-content: center; }
         }
     </style>
@@ -223,6 +225,7 @@
         </div>
     </nav>
 
+    <!-- The rest of your page remains unchanged -->
     <section class="hero">
         <div class="hero-content">
             <h1>Enter the Shinobi World</h1>
