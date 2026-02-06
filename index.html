@@ -8,14 +8,16 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         :root {
-            --gold: #ffcc00;
-            --dark-bg: #0a0a0a;
-            --nav-bg: rgba(10,10,10,0.85);
-            --card-bg: #111111;
-            --text: #e0e0e0;
+            --primary: #ff4500;          /* Main accent (orange-red) */
+            --primary-hover: #ff5500;
+            --gold: #ffcc00;             /* Gold for nav, icons, highlights */
+            --dark-bg: #0b0b0f;          /* Deep ninja black */
+            --nav-bg: rgba(11,11,15,0.88);
+            --card-bg: #111115;
+            --text: #e8e8e8;
             --text-light: #bbbbbb;
-            --border: #222222;
-            --hover: #444444;
+            --border: #222226;
+            --glow: rgba(255,69,0,0.35);
         }
         body {
             margin: 0;
@@ -29,6 +31,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #ffffff;
+            text-shadow: 0 0 20px var(--glow);
         }
         nav {
             background: var(--nav-bg);
@@ -41,7 +44,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.7);
             display: flex;
             align-items: center;
-            /* No borders, no orange, no lines under nav/icon/buttons */
+            border-bottom: none !important; /* Force no orange line */
         }
         .nav-logo-wrapper {
             margin-right: 1.5rem;
@@ -59,7 +62,7 @@
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 1.6rem;
         }
         nav a {
             color: var(--gold);
@@ -87,7 +90,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.45) 85%);
+            background: radial-gradient(circle at center, transparent 45%, rgba(0,0,0,0.4) 90%);
             pointer-events: none;
         }
         .hero-content {
@@ -98,13 +101,14 @@
         .hero h1 {
             font-size: 5.8rem;
             margin: 0 0 1.2rem;
-            color: #ffffff;
+            text-shadow: 0 0 35px var(--glow);
         }
         .hero p {
             font-size: 1.75rem;
             max-width: 880px;
             margin: 0 auto 3.5rem;
             color: #f0f0f0;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.9);
         }
         .btn-group {
             display: flex;
@@ -113,8 +117,8 @@
             flex-wrap: wrap;
         }
         .btn-primary {
-            background: var(--gold);
-            color: #000;
+            background: var(--primary);
+            color: white;
             padding: 1.3rem 3.2rem;
             font-size: 1.45rem;
             font-weight: 700;
@@ -122,10 +126,12 @@
             border-radius: 8px;
             text-decoration: none;
             transition: all 0.35s;
+            box-shadow: 0 8px 25px rgba(255,69,0,0.5);
         }
         .btn-primary:hover {
-            background: #ffd633;
+            background: var(--primary-hover);
             transform: translateY(-5px);
+            box-shadow: 0 18px 40px rgba(255,69,0,0.7);
         }
         .btn-secondary {
             background: transparent;
@@ -161,8 +167,8 @@
         }
         .feature-card:hover {
             transform: translateY(-14px);
-            box-shadow: 0 25px 55px rgba(0,0,0,0.5);
-            border-color: var(--gold);
+            box-shadow: 0 25px 55px rgba(255,69,0,0.25);
+            border-color: var(--primary);
         }
         .feature-icon {
             font-size: 4.5rem;
@@ -184,6 +190,7 @@
             background: #000;
             padding: 5rem 2rem;
             text-align: center;
+            border-top: 2px solid var(--gold);
         }
         footer p {
             margin: 0.8rem 0;
