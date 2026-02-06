@@ -31,15 +31,15 @@
             color: #ffffff;
         }
         nav {
-            background: rgba(15,15,15,0.92);
-            backdrop-filter: blur(10px);
+            background: rgba(15,15,15,0.75); /* More transparent (was 0.92) */
+            backdrop-filter: blur(12px);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            padding: 0.8rem 2rem 0.4rem 2rem; /* Reduced bottom padding → orange bar closer to icon */
-            border-bottom: 4px solid var(--primary); /* Thicker orange bar for visibility */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            padding: 0.8rem 2rem 0.4rem 2rem; /* Keeps orange bar close */
+            border-bottom: 4px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
             display: flex;
             align-items: center;
         }
@@ -47,12 +47,13 @@
             margin-right: 1.5rem;
         }
         .nav-logo {
-            height: 80px;
+            width: 85px;          /* Your requested width */
+            height: 54px;         /* Your requested height */
             display: block;
             transition: transform 0.3s;
         }
         .nav-logo:hover {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
         .nav-links {
             display: flex;
@@ -199,7 +200,7 @@
             .hero h1 { font-size: 4rem; }
             .hero p { font-size: 1.4rem; }
             .btn-primary, .btn-secondary { padding: 1.1rem 2.5rem; font-size: 1.25rem; }
-            .nav-logo { height: 60px; } /* Slightly smaller on mobile for balance */
+            .nav-logo { height: 60px; width: 64px; } /* Slightly smaller on mobile */
             nav { padding: 0.8rem 1rem; flex-wrap: wrap; }
             .nav-links { justify-content: center; }
         }
@@ -225,7 +226,7 @@
         </div>
     </nav>
 
-    <!-- The rest of your page remains unchanged -->
+    <!-- The rest of your page remains the same -->
     <section class="hero">
         <div class="hero-content">
             <h1>Enter the Shinobi World</h1>
