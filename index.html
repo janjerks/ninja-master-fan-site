@@ -1,327 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ninja Master: A Shinobi Saga – Fan Community</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        :root {
-            --primary: #ff4500;
-            --primary-hover: #ff6600;
-            --gold: #ffcc00;
-            --dark-bg: #0a0a0a;
-            --nav-bg: rgba(10,10,10,0.88);
-            --card-bg: #111115;
-            --text: #e8e8e8;
-            --text-light: #bbbbbb;
-            --border: #222226;
-            --glow: rgba(255,69,0,0.35);
-        }
-        body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background: var(--dark-bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-        h1, h2 {
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #ffffff;
-            text-shadow: 0 0 20px var(--glow);
-        }
-        nav {
-            background: var(--nav-bg);
-            backdrop-filter: blur(12px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-            display: flex;
-            align-items: center;
-            border-bottom: none;
-        }
-        .nav-logo-wrapper {
-            margin-right: 1.5rem;
-        }
-        .nav-logo {
-            height: 48px;
-            width: auto;
-            display: block;
-            transition: transform 0.3s;
-        }
-        .nav-logo:hover {
-            transform: scale(1.1);
-        }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.6rem;
-        }
-        .nav-link {
-            color: var(--gold);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-            position: relative;
-            padding-bottom: 6px;
-        }
-        .nav-link:hover {
-            color: #ffffff;
-        }
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--gold);
-            border-radius: 2px;
-            transition: all 0.4s ease;
-        }
-        .hero {
-            height: 100vh;
-            min-height: 700px;
-            background: url('/ninja-master-fan-site/images/hero-bg.png') center/cover no-repeat fixed;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 2rem;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at center, transparent 45%, rgba(0,0,0,0.4) 90%);
-            pointer-events: none;
-        }
-        .hero-content {
-            max-width: 1100px;
-            position: relative;
-            z-index: 2;
-        }
-        .hero h1 {
-            font-size: 5.8rem;
-            margin: 0 0 1.2rem;
-            text-shadow: 0 0 35px var(--glow);
-        }
-        .hero p {
-            font-size: 1.75rem;
-            max-width: 880px;
-            margin: 0 auto 3.5rem;
-            color: #f0f0f0;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.9);
-        }
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 1.8rem;
-            flex-wrap: wrap;
-        }
-        .btn-primary, .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 1.3rem 3.2rem;
-            font-size: 1.45rem;
-            font-weight: 700;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.35s;
-        }
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 8px 25px rgba(255,69,0,0.5);
-        }
-        .btn-primary:hover {
-            background: var(--primary-hover);
-            transform: translateY(-5px);
-            box-shadow: 0 18px 40px rgba(255,69,0,0.7);
-        }
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-        }
-        .btn-secondary:hover {
-            background: var(--gold);
-            color: #000;
-        }
-        .btn-icon {
-            height: 28px;
-            width: auto;
-        }
-        .section {
-            padding: 9rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 2.8rem;
-        }
-        .feature-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 3.2rem 2.2rem;
-            text-align: center;
-            transition: all 0.4s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-14px);
-            box-shadow: 0 25px 55px rgba(255,69,0,0.25);
-            border-color: var(--primary);
-        }
-        .feature-icon {
-            font-size: 4.5rem;
-            color: var(--gold);
-            margin-bottom: 1.8rem;
-        }
-        .about-section {
-            background: linear-gradient(to bottom, #0a0a0a, #111);
-            text-align: center;
-        }
-        .about-section p {
-            max-width: 950px;
-            margin: 2.5rem auto;
-            font-size: 1.35rem;
-            line-height: 1.8;
-            color: var(--text);
-        }
-        footer {
-            background: #000;
-            padding: 5rem 2rem;
-            text-align: center;
-            border-top: 2px solid var(--gold);
-        }
-        footer p {
-            margin: 0.8rem 0;
-            opacity: 0.85;
-            font-size: 1.05rem;
-        }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 4rem; }
-            .hero p { font-size: 1.4rem; }
-            .btn-primary, .btn-secondary { padding: 1.1rem 2.5rem; font-size: 1.25rem; }
-            .btn-icon { height: 24px; }
-            .nav-logo { height: 50px; width: auto; }
-            nav { padding: 0.8rem 1rem; flex-wrap: wrap; }
-            .nav-links { justify-content: center; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ninja Master: A Shinobi Saga – Fan Community</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+:root {
+--primary: #ff4500;
+--primary-hover: #ff6600;
+--gold: #ffcc00;
+--dark-bg: #0a0a0a;
+--nav-bg: rgba(10,10,10,0.88);
+--card-bg: #111115;
+--text: #e8e8e8;
+--text-light: #bbbbbb;
+--border: #222226;
+--glow: rgba(255,69,0,0.35);
+}
+body { margin:0; font-family:'Roboto',sans-serif; background:var(--dark-bg); color:var(--text); line-height:1.6; }
+h1,h2 { font-family:'Orbitron',sans-serif; text-transform:uppercase; letter-spacing:2px; color:#fff; text-shadow:0 0 20px var(--glow); }
+nav {
+background:var(--nav-bg);
+backdrop-filter:blur(12px);
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+padding:1rem 2rem;
+box-shadow:0 4px 15px rgba(0,0,0,0.7);
+display:flex;
+align-items:center;
+border-bottom:none;
+}
+.nav-logo-wrapper { margin-right:1.5rem; }
+.nav-logo { height:48px; width:auto; display:block; transition:transform 0.3s; }
+.nav-logo:hover { transform:scale(1.1); }
+.nav-links {
+display:flex;
+align-items:center;
+flex-wrap:wrap;
+gap:1.6rem;
+}
+.nav-link {
+color:var(--gold);
+text-decoration:none;
+font-weight:500;
+font-size:1.1rem;
+position:relative;
+padding-bottom:6px;
+transition:color 0.3s;
+}
+.nav-link:hover { color:#fff; }
+.nav-link.active {
+color:#fff;
+}
+.nav-link.active::after {
+content:'';
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+height:3px;
+background:var(--gold);
+border-radius:2px;
+}
+.hero {
+height:100vh;
+min-height:700px;
+background:url('/ninja-master-fan-site/images/hero-bg.png') center/cover no-repeat fixed;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 2rem;
+}
+.hero::before {
+content:'';
+position:absolute;
+inset:0;
+background:radial-gradient(circle at center,transparent 45%,rgba(0,0,0,0.4) 90%);
+pointer-events:none;
+}
+.hero-content { max-width:1100px; position:relative; z-index:2; }
+.hero h1 { font-size:5.8rem; margin:0 0 1.2rem; text-shadow:0 0 35px var(--glow); }
+.hero p { font-size:1.75rem; max-width:880px; margin:0 auto 3.5rem; color:#f0f0f0; text-shadow:0 2px 12px rgba(0,0,0,0.9); }
+.btn-group { display:flex; justify-content:center; gap:1.8rem; flex-wrap:wrap; }
+.btn-primary,.btn-secondary {
+display:inline-flex;
+align-items:center;
+gap:0.8rem;
+padding:1.3rem 3.2rem;
+font-size:1.45rem;
+font-weight:700;
+border-radius:8px;
+text-decoration:none;
+transition:all 0.35s;
+}
+.btn-primary { background:var(--primary); color:white; box-shadow:0 8px 25px rgba(255,69,0,0.5); }
+.btn-primary:hover { background:var(--primary-hover); transform:translateY(-5px); box-shadow:0 18px 40px rgba(255,69,0,0.7); }
+.btn-secondary { background:transparent; border:2px solid var(--gold); color:var(--gold); }
+.btn-secondary:hover { background:var(--gold); color:#000; }
+.btn-icon { height:28px; width:auto; }
+.section { padding:9rem 2rem; max-width:1400px; margin:0 auto; }
+.features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(360px,1fr)); gap:2.8rem; }
+.feature-card {
+background:var(--card-bg);
+border:1px solid var(--border);
+border-radius:16px;
+padding:3.2rem 2.2rem;
+text-align:center;
+transition:all 0.4s ease;
+}
+.feature-card:hover { transform:translateY(-14px); box-shadow:0 25px 55px rgba(255,69,0,0.25); border-color:var(--primary); }
+.feature-icon { font-size:4.5rem; color:var(--gold); margin-bottom:1.8rem; }
+.about-section { background:linear-gradient(to bottom,#0a0a0a,#111); text-align:center; }
+.about-section p { max-width:950px; margin:2.5rem auto; font-size:1.35rem; line-height:1.8; color:var(--text); }
+footer { background:#000; padding:5rem 2rem; text-align:center; border-top:2px solid var(--gold); }
+footer p { margin:0.8rem 0; opacity:0.85; font-size:1.05rem; }
+@media (max-width:768px) {
+.hero h1 { font-size:4rem; }
+.hero p { font-size:1.4rem; }
+.btn-primary,.btn-secondary { padding:1.1rem 2.5rem; font-size:1.25rem; }
+.btn-icon { height:24px; }
+.nav-logo { height:50px; width:auto; }
+nav { padding:0.8rem 1rem; flex-wrap:wrap; }
+.nav-links { justify-content:center; }
+}
+</style>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html">
-            <img src="/ninja-master-fan-site/images/ninja-master-icon.png" alt="Ninja Master Icon" class="nav-logo">
-        </a>
-        <div class="nav-links">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank" class="nav-link">Play Now</a>
-            <a href="https://www.facebook.com/profile.php?id=100083121342903" target="_blank" class="nav-link">News</a>
-            <a href="https://www.facebook.com/groups/ninjamasterashinobisaga" target="_blank" class="nav-link">Community</a>
-            <a href="guild-wars.html" class="nav-link">Guild Wars History</a>
-            <a href="https://nm-kekkai-solver.netlify.app/" target="_blank" class="nav-link">Kekkai Solver</a>
-            <a href="https://nm-stats-simulator.vercel.app/" target="_blank" class="nav-link">Stats Simulator</a>
-            <a href="https://ninjamaster.rpg-board.net/f3-guides" target="_blank" class="nav-link">Guides</a>
-            <a href="https://ninjamaster.rpg-board.net/" target="_blank" class="nav-link">Forum</a>
-            <a href="https://ninjamaster.rpg-board.net/f5-support-questions" target="_blank" class="nav-link">Support</a>
-        </div>
-    </nav>
+<nav>
+<a href="index.html">
+<img src="/ninja-master-fan-site/images/ninja-master-icon.png" alt="Ninja Master Icon" class="nav-logo">
+</a>
+<div class="nav-links">
+<a href="index.html" class="nav-link">Home</a>
+<a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank" class="nav-link">Play Now</a>
+<a href="https://www.facebook.com/profile.php?id=100083121342903" target="_blank" class="nav-link">News</a>
+<a href="https://www.facebook.com/groups/ninjamasterashinobisaga" target="_blank" class="nav-link">Community</a>
+<a href="guild-wars.html" class="nav-link">Guild Wars History</a>
+<a href="https://nm-kekkai-solver.netlify.app/" target="_blank" class="nav-link">Kekkai Solver</a>
+<a href="https://nm-stats-simulator.vercel.app/" target="_blank" class="nav-link">Stats Simulator</a>
+<a href="https://ninjamaster.rpg-board.net/f3-guides" target="_blank" class="nav-link">Guides</a>
+<a href="https://ninjamaster.rpg-board.net/" target="_blank" class="nav-link">Forum</a>
+<a href="https://ninjamaster.rpg-board.net/f5-support-questions" target="_blank" class="nav-link">Support</a>
+</div>
+</nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Enter the Shinobi World</h1>
-            <p>Master ancient jutsu, lead your guild to victory, and rise through the ranks in Ninja Master: A Shinobi Saga.</p>
-            <div class="btn-group">
-                <a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank" class="btn-primary">
-                    <img src="/ninja-master-fan-site/images/play-now-icon.png" alt="Play Icon" class="btn-icon">
-                    Play Now
-                </a>
-                <a href="guild-wars.html" class="btn-secondary">
-                    Guild War History
-                </a>
-            </div>
-        </div>
-    </section>
+<section class="hero">
+<div class="hero-content">
+<h1>Enter the Shinobi World</h1>
+<p>Master ancient jutsu, lead your guild to victory, and rise through the ranks in Ninja Master: A Shinobi Saga.</p>
+<div class="btn-group">
+<a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank" class="btn-primary">
+<img src="/ninja-master-fan-site/images/play-now-icon.png" alt="Play Icon" class="btn-icon">
+Play Now
+</a>
+<a href="guild-wars.html" class="btn-secondary">
+Guild War History
+</a>
+</div>
+</div>
+</section>
 
-    <section class="section features">
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">⚔️</div>
-                <h3>Epic Guild Wars</h3>
-                <p>Full history from Season 1 to Season 13 – champions, rankings, and massive rewards.</p>
-                <a href="guild-wars.html" class="btn-primary" style="margin-top: 1.8rem;">Explore All Seasons</a>
-            </div>
+<section class="section features">
+<div class="features-grid">
+<div class="feature-card">
+<div class="feature-icon">⚔️</div>
+<h3>Epic Guild Wars</h3>
+<p>Full history from Season 1 to Season 13 – champions, rankings, and massive rewards.</p>
+<a href="guild-wars.html" class="btn-primary" style="margin-top:1.8rem;">Explore All Seasons</a>
+</div>
+<div class="feature-card">
+<div class="feature-icon">🧰</div>
+<h3>Ultimate Tools</h3>
+<p>Kekkai Solver, Stats Simulator, and player guides – sharpen your skills and dominate.</p>
+<div style="margin-top:1.8rem;">
+<a href="https://nm-kekkai-solver.netlify.app/" target="_blank" class="btn-primary">Kekkai Solver</a>
+<a href="https://nm-stats-simulator.vercel.app/" target="_blank" class="btn-primary" style="margin-left:1rem;">Stats Simulator</a>
+</div>
+</div>
+<div class="feature-card">
+<div class="feature-icon">🌑</div>
+<h3>Shinobi Community</h3>
+<p>Join thousands of players, share strategies, stay updated, and forge alliances.</p>
+<a href="https://www.facebook.com/groups/ninjamasterashinobisaga" target="_blank" class="btn-primary" style="margin-top:1.8rem;">Join the Group</a>
+</div>
+</div>
+</section>
 
-            <div class="feature-card">
-                <div class="feature-icon">🧰</div>
-                <h3>Ultimate Tools</h3>
-                <p>Kekkai Solver, Stats Simulator, and player guides – sharpen your skills and dominate.</p>
-                <div style="margin-top: 1.8rem;">
-                    <a href="https://nm-kekkai-solver.netlify.app/" target="_blank" class="btn-primary">Kekkai Solver</a>
-                    <a href="https://nm-stats-simulator.vercel.app/" target="_blank" class="btn-primary" style="margin-left: 1rem;">Stats Simulator</a>
-                </div>
-            </div>
+<section class="section about-section">
+<h2>The Path of the Ninja</h2>
+<p>Ninja Master: A Shinobi Saga brings true ninja action to mobile – 60FPS gameplay, revamped touch controls, free-to-play progression, live PvP, seasonal events, worldwide leaderboards, and massive guild wars.</p>
+<p style="margin-top:2.2rem;">This fan site is your complete resource: full guild war history, powerful community tools, guides, and a thriving shinobi community.</p>
+</section>
 
-            <div class="feature-card">
-                <div class="feature-icon">🌑</div>
-                <h3>Shinobi Community</h3>
-                <p>Join thousands of players, share strategies, stay updated, and forge alliances.</p>
-                <a href="https://www.facebook.com/groups/ninjamasterashinobisaga" target="_blank" class="btn-primary" style="margin-top: 1.8rem;">Join the Group</a>
-            </div>
-        </div>
-    </section>
+<footer>
+<p>Fan-made site for Ninja Master: A Shinobi Saga • Not official • © 2026 John</p>
+<p style="margin-top:1rem; font-size:0.95rem; opacity:0.7;">Built with passion for the shinobi community • Hosted on GitHub Pages</p>
+</footer>
 
-    <section class="section about-section">
-        <h2>The Path of the Ninja</h2>
-        <p>
-            Ninja Master: A Shinobi Saga brings true ninja action to mobile – 60FPS gameplay, revamped touch controls, free-to-play progression, live PvP, seasonal events, worldwide leaderboards, and massive guild wars.
-        </p>
-        <p style="margin-top: 2.2rem;">
-            This fan site is your complete resource: full guild war history, powerful community tools, guides, and a thriving shinobi community.
-        </p>
-    </section>
-
-    <footer>
-        <p>Fan-made site for Ninja Master: A Shinobi Saga • Not official • © 2026 John</p>
-        <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.7;">
-            Built with passion for the shinobi community • Hosted on GitHub Pages
-        </p>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const currentPath = window.location.pathname.replace(/\/$/, '');
-            const links = document.querySelectorAll('.nav-link');
-
-            links.forEach(link => {
-                let href = link.getAttribute('href');
-
-                if (href.startsWith('http') || href.startsWith('//')) return;
-
-                href = href.replace(/\/$/, '');
-
-                if (currentPath === href || currentPath === '/' + href || (currentPath === '/' && href === 'index.html')) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('.nav-link').forEach(link => {
+const href = link.getAttribute('href');
+if (href.startsWith('http') || href.startsWith('//')) return;
+const targetFile = href.split('/').pop();
+if (currentFile === targetFile) {
+link.classList.add('active');
+}
+});
+});
+</script>
 
 </body>
 </html>
