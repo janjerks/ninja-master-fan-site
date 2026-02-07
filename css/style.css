@@ -269,3 +269,105 @@ select {
     .section { padding: 7rem 1.5rem 4rem; }
     main { padding-top: 100px; }
 }
+/* ================================================
+   Styles for loaded season content (season*.html)
+   ================================================ */
+
+.season-loaded-content {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2.5rem;
+  min-height: 500px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+  margin: 1.5rem 0 3rem;
+}
+
+.season-loaded-content h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin: 0 0 1.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--gold);
+}
+
+.season-loaded-content h3 {
+  text-align: center;
+  font-size: 1.9rem;
+  margin: 2.5rem 0 1.2rem;
+  color: var(--gold);
+}
+
+.season-loaded-content p {
+  line-height: 1.7;
+  margin: 1.2rem 0;
+  font-size: 1.08rem;
+  text-align: center;
+}
+
+.season-loaded-content p strong {
+  color: var(--gold);
+}
+
+/* Tables in loaded season content */
+.season-loaded-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 1.05rem;
+  background: #0f0f12;
+}
+
+.season-loaded-content th,
+.season-loaded-content td {
+  padding: 1.1rem 1.3rem;
+  border: 1px solid #2a2a2e;
+  text-align: left;
+}
+
+.season-loaded-content th {
+  background: #1a1a1f;
+  color: var(--gold);
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 1.05rem;
+}
+
+.season-loaded-content tr:nth-child(even) {
+  background: #141418;
+}
+
+.season-loaded-content tr:hover {
+  background: #1e1e24;
+  transition: background 0.2s;
+}
+
+/* Icons / images in season tables */
+.season-loaded-content img {
+  vertical-align: middle;
+  margin: 0 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(255,69,0,0.15);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .season-loaded-content {
+    padding: 1.8rem 1.2rem;
+  }
+  .season-loaded-content table {
+    font-size: 0.95rem;
+  }
+  .season-loaded-content th,
+  .season-loaded-content td {
+    padding: 0.9rem 0.8rem;
+  }
+  .season-loaded-content img {
+    width: 24px;
+    height: 24px;
+  }
+}

@@ -17,8 +17,8 @@
     <p>View complete rankings, champions, and rewards from all seasons.</p>
   </div>
 
-  <div style="text-align: center; margin-bottom: 2rem;">
-    <select id="seasonSelect">
+  <div style="text-align: center; margin: 2.5rem 0;">
+    <select id="seasonSelect" style="min-width: 340px; font-size: 1.2rem; padding: 1rem 1.6rem;">
       <option value="">Choose a Season</option>
       <option value="1">Season 1</option>
       <option value="2">Season 2</option>
@@ -36,8 +36,10 @@
     </select>
   </div>
 
-  <div id="seasonContent" style="min-height: 500px;">
-    <p style="text-align: center;">Select a season above to view results.</p>
+  <div id="seasonContent" class="season-loaded-content">
+    <p style="text-align: center; padding: 4rem 1rem; font-size: 1.3rem; opacity: 0.8;">
+      Select a season to view detailed rankings and rewards.
+    </p>
   </div>
 </main>
 
@@ -65,18 +67,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Error loading shared components:', err);
   }
 
-  // Season loading
+  // Season loading logic
   const seasonSelect = document.getElementById('seasonSelect');
   const seasonContent = document.getElementById('seasonContent');
 
   seasonSelect.addEventListener('change', async (e) => {
     const season = e.target.value;
     if (!season) {
-      seasonContent.innerHTML = '<p style="text-align:center;">Select a season above to view results.</p>';
+      seasonContent.innerHTML = '<p style="text-align:center; padding:4rem 1rem; font-size:1.3rem; opacity:0.8;">Select a season to view detailed rankings and rewards.</p>';
       return;
     }
 
-    seasonContent.innerHTML = '<p style="text-align:center;">Loading Season ' + season + '...</p>';
+    seasonContent.innerHTML = '<p style="text-align:center; padding:4rem 1rem;">Loading Season ' + season + '...</p>';
 
     try {
       const timestamp = new Date().getTime();
@@ -86,7 +88,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       seasonContent.innerHTML = html;
     } catch (err) {
       console.error('Season load error:', err);
-      seasonContent.innerHTML = '<p style="color:#ff4500; text-align:center;">Error loading season. Please check if seasons/season' + season + '.html exists.</p>';
+      seasonContent.innerHTML = '<p style="color:#ff4500; text-align:center; padding:4rem 1rem;">Error loading season. Please try again later.</p>';
     }
   });
 });
