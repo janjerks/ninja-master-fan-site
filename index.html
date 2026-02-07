@@ -83,7 +83,7 @@ pointer-events:none;
 .btn-primary,.btn-secondary {
 display:inline-flex;
 align-items:center;
-gap:0.8rem;
+gap:1rem;                    /* ← increased for better spacing */
 padding:1.3rem 3.2rem;
 font-size:1.45rem;
 font-weight:700;
@@ -95,7 +95,12 @@ transition:all 0.35s;
 .btn-primary:hover { background:var(--primary-hover); transform:translateY(-5px); box-shadow:0 18px 40px rgba(255,69,0,0.7); }
 .btn-secondary { background:transparent; border:2px solid var(--gold); color:var(--gold); }
 .btn-secondary:hover { background:var(--gold); color:#000; }
-.btn-icon { height:28px; width:auto; }
+.btn-icon {
+height:34px;                 /* ← main change: larger to match button scale */
+width:auto;
+max-width:48px;              /* safety cap if icon is very wide */
+vertical-align:middle;       /* ensures perfect vertical centering */
+}
 .section { padding:9rem 2rem; max-width:1400px; margin:0 auto; }
 .features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(360px,1fr)); gap:2.8rem; }
 .feature-card {
@@ -116,7 +121,7 @@ footer p { margin:0.8rem 0; opacity:0.85; font-size:1.05rem; }
 .hero h1 { font-size:4rem; }
 .hero p { font-size:1.4rem; }
 .btn-primary,.btn-secondary { padding:1.1rem 2.5rem; font-size:1.25rem; }
-.btn-icon { height:24px; }
+.btn-icon { height:30px; }   /* slightly smaller on mobile for balance */
 .nav-logo { height:50px; width:auto; }
 nav { padding:0.8rem 1rem; flex-wrap:wrap; }
 .nav-links { justify-content:center; }
@@ -124,7 +129,6 @@ nav { padding:0.8rem 1rem; flex-wrap:wrap; }
 </style>
 </head>
 <body>
-
 <nav>
 <a href="index.html">
 <img src="/ninja-master-fan-site/images/ninja-master-icon.png" alt="Ninja Master Icon" class="nav-logo">
@@ -142,7 +146,6 @@ nav { padding:0.8rem 1rem; flex-wrap:wrap; }
 <a href="https://ninjamaster.rpg-board.net/f5-support-questions" target="_blank" class="nav-link">Support</a>
 </div>
 </nav>
-
 <section class="hero">
 <div class="hero-content">
 <h1>Enter the Shinobi World</h1>
@@ -158,7 +161,6 @@ Guild War History
 </div>
 </div>
 </section>
-
 <section class="section features">
 <div class="features-grid">
 <div class="feature-card">
@@ -184,18 +186,15 @@ Guild War History
 </div>
 </div>
 </section>
-
 <section class="section about-section">
 <h2>The Path of the Ninja</h2>
 <p>Ninja Master: A Shinobi Saga brings true ninja action to mobile – 60FPS gameplay, revamped touch controls, free-to-play progression, live PvP, seasonal events, worldwide leaderboards, and massive guild wars.</p>
 <p style="margin-top:2.2rem;">This fan site is your complete resource: full guild war history, powerful community tools, guides, and a thriving shinobi community.</p>
 </section>
-
 <footer>
 <p>Fan-made site for Ninja Master: A Shinobi Saga • Not official • © 2026 John</p>
 <p style="margin-top:1rem; font-size:0.95rem; opacity:0.7;">Built with passion for the shinobi community • Hosted on GitHub Pages</p>
 </footer>
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 const currentFile = window.location.pathname.split('/').pop() || 'index.html';
@@ -209,6 +208,5 @@ link.classList.add('active');
 });
 });
 </script>
-
 </body>
 </html>
