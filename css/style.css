@@ -5,10 +5,10 @@
 }
 
 :root {
-    --primary: #ff5500;          /* slightly warmer red-orange */
+    --primary: #ff5500;          /* warmer red-orange */
     --primary-hover: #ff7733;    /* softer hover */
-    --gold: #e6b800;             /* less blinding gold, still luxurious */
-    --gold-glow: rgba(230,184,0,0.4);
+    --gold: #e6b800;             /* refined gold */
+    --gold-glow: rgba(230,184,0,0.35);
     --dark-bg: #0a0a0a;
     --nav-bg: rgba(10,10,10,0.92);
     --card-bg: #111115;
@@ -30,10 +30,10 @@ h1, h2, h3 {
     text-transform: uppercase;
     letter-spacing: 1.8px;
     color: #fff;
-    text-shadow: 0 2px 12px var(--glow), 0 0 20px var(--gold-glow);
+    text-shadow: 0 2px 12px var(--glow);
 }
 
-h1 { font-size: 5.6rem; margin: 0 0 1.4rem; }
+h1 { font-size: 5.6rem; margin: 0 0 1.4rem; text-align: center; }
 h2 { font-size: 3.4rem; margin: 2.8rem 0 1.6rem; }
 h3 { font-size: 2.1rem; margin: 2rem 0 1rem; }
 
@@ -42,7 +42,8 @@ nav {
     backdrop-filter: blur(14px);
     position: fixed;
     top: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
     z-index: 1000;
     padding: 1.1rem 2.2rem;
     box-shadow: 0 6px 20px rgba(0,0,0,0.6);
@@ -53,11 +54,11 @@ nav {
 .nav-logo {
     height: 50px;
     width: auto;
-    transition: transform 0.35s, filter 0.35s;
+    transition: transform 0.35s;
 }
+
 .nav-logo:hover {
     transform: scale(1.08);
-    filter: drop-shadow(0 0 8px var(--gold));
 }
 
 .nav-links {
@@ -65,6 +66,7 @@ nav {
     align-items: center;
     flex-wrap: wrap;
     gap: 1.8rem;
+    margin-left: auto;
 }
 
 .nav-link {
@@ -74,13 +76,10 @@ nav {
     font-size: 1.15rem;
     position: relative;
     padding-bottom: 7px;
-    transition: color 0.35s, text-shadow 0.35s;
+    transition: color 0.35s;
 }
 
-.nav-link:hover {
-    color: #ffffff;
-    text-shadow: 0 0 12px var(--gold-glow);
-}
+.nav-link:hover { color: #ffffff; }
 
 .nav-link.active::after {
     content: '';
@@ -89,59 +88,117 @@ nav {
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(to right, var(--gold), var(--primary));
+    background: var(--gold);
     border-radius: 3px;
     box-shadow: 0 0 10px var(--gold-glow);
 }
 
-/* ... keep your existing .hero, .btn-primary, .btn-secondary, .features-grid, .feature-card, etc. ... */
+.section {
+    padding: 9rem 2rem 6rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
 
-/* Softer button hover */
+.hero {
+    min-height: 100vh;
+    background: url('/ninja-master-fan-site/images/hero-bg.png') center/cover no-repeat fixed;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 45%, rgba(0,0,0,0.5) 90%);
+}
+
+.hero-content {
+    max-width: 1100px;
+    position: relative;
+    z-index: 2;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 1.3rem 3.2rem;
+    font-size: 1.45rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.35s;
+    box-shadow: 0 8px 25px rgba(255,85,0,0.45);
+}
+
 .btn-primary:hover {
     background: var(--primary-hover);
-    box-shadow: 0 12px 30px rgba(255,85,0,0.45);
-    transform: translateY(-4px);
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px rgba(255,85,0,0.6);
 }
 
-.btn-secondary:hover {
-    background: var(--gold);
-    color: #111;
-    box-shadow: 0 8px 25px rgba(230,184,0,0.4);
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 2.8rem;
 }
 
-/* Footer with gold border */
+.feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 3.2rem 2.2rem;
+    text-align: center;
+    transition: all 0.4s;
+}
+
+.feature-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 55px rgba(255,85,0,0.25);
+}
+
 footer {
     background: #000;
     padding: 5rem 2rem;
     text-align: center;
     border-top: 3px solid var(--gold);
-    box-shadow: 0 -4px 20px rgba(230,184,0,0.15);
 }
 
-footer p {
-    margin: 0.9rem 0;
-    font-size: 1.05rem;
-    opacity: 0.88;
-}
-
-/* Season content polish (already included before) */
+/* Season loaded content */
 .season-loaded-content {
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 2.5rem;
     min-height: 500px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.45);
-    margin: 1.5rem 0 3rem;
+    margin: 2rem 0;
 }
 
-/* ... keep all your other existing rules ... */
+.season-loaded-content h2 { border-bottom: 2px solid var(--gold); padding-bottom: 1rem; }
+.season-loaded-content h3 { color: var(--gold); }
+.season-loaded-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+}
+.season-loaded-content th, .season-loaded-content td {
+    padding: 1rem;
+    border: 1px solid var(--border);
+}
+.season-loaded-content th {
+    background: #1a1a1f;
+    color: var(--gold);
+}
 
 /* Mobile */
 @media (max-width: 768px) {
-    h1 { font-size: 4.2rem; }
-    nav { padding: 0.9rem 1.2rem; }
-    .nav-links { gap: 1.2rem; justify-content: center; }
+    h1 { font-size: 4rem; }
+    nav { padding: 1rem 1.5rem; flex-wrap: wrap; }
+    .nav-links { gap: 1.2rem; justify-content: center; margin: 1rem 0 0; }
     .section { padding: 7rem 1.5rem 4rem; }
     main { padding-top: 100px; }
 }
