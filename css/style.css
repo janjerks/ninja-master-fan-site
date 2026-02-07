@@ -84,13 +84,19 @@ nav {
 .nav-link.active::after {
     content: '';
     position: absolute;
-    bottom: -3px;
+    bottom: 2px;                   /* moved up closer to the text (was -2px or -3px before) */
     left: 0;
     width: 100%;
-    height: 3px;
-    background: var(--gold);
-    border-radius: 3px;
-    box-shadow: 0 0 10px var(--gold-glow);
+    height: 4px;                   /* slightly thicker for better visibility */
+    background: linear-gradient(
+        to right,
+        var(--gold) 0%,
+        #ff7733 50%,               /* hint of red-orange in the middle */
+        var(--gold) 100%
+    );
+    border-radius: 4px;
+    box-shadow: 0 0 12px rgba(255, 119, 51, 0.5); /* subtle orange glow */
+    transition: all 0.3s ease;
 }
 
 .section {
