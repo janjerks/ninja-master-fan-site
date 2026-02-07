@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guild Wars History - Ninja Master Fan Site</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guild Wars History – Ninja Master Fan Site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <div id="nav-placeholder"></div>
 
-<main>
-<h1>Guild Wars History</h1>
-<p>View complete rankings, champions, and rewards from all seasons.</p>
+<main class="section" style="padding-top: 140px;">
+  <div style="text-align: center; margin-bottom: 2rem;">
+    <h1>Guild Wars History</h1>
+    <p>View complete rankings, champions, and rewards from all seasons.</p>
+  </div>
 
-<select id="seasonSelect">
-<option value="">Choose a Season</option>
-<option value="1">Season 1</option>
-<option value="2">Season 2</option>
-<option value="3">Season 3</option>
-<option value="4">Season 4</option>
-<option value="5">Season 5</option>
-<option value="6">Season 6</option>
-<option value="7">Season 7</option>
-<option value="8">Season 8</option>
-<option value="9">Season 9</option>
-<option value="10">Season 10</option>
-<option value="11">Season 11</option>
-<option value="12">Season 12</option>
-<option value="13">Season 13</option>
-</select>
+  <div style="text-align: center; margin-bottom: 2rem;">
+    <select id="seasonSelect">
+      <option value="">Choose a Season</option>
+      <option value="1">Season 1</option>
+      <option value="2">Season 2</option>
+      <option value="3">Season 3</option>
+      <option value="4">Season 4</option>
+      <option value="5">Season 5</option>
+      <option value="6">Season 6</option>
+      <option value="7">Season 7</option>
+      <option value="8">Season 8</option>
+      <option value="9">Season 9</option>
+      <option value="10">Season 10</option>
+      <option value="11">Season 11</option>
+      <option value="12">Season 12</option>
+      <option value="13">Season 13</option>
+    </select>
+  </div>
 
-<div id="seasonContent">
-<p>Select a season above to view results.</p>
-</div>
+  <div id="seasonContent" style="min-height: 500px;">
+    <p style="text-align: center;">Select a season above to view results.</p>
+  </div>
 </main>
 
 <div id="footer-placeholder"></div>
@@ -60,31 +64,31 @@ document.addEventListener('DOMContentLoaded', async () => {
   } catch (err) {
     console.error('Error loading shared components:', err);
   }
-});
 
-// Season loading (unchanged)
-const seasonSelect = document.getElementById('seasonSelect');
-const seasonContent = document.getElementById('seasonContent');
+  // Season loading
+  const seasonSelect = document.getElementById('seasonSelect');
+  const seasonContent = document.getElementById('seasonContent');
 
-seasonSelect.addEventListener('change', async (e) => {
-  const season = e.target.value;
-  if (!season) {
-    seasonContent.innerHTML = '<p>Select a season above to view results.</p>';
-    return;
-  }
+  seasonSelect.addEventListener('change', async (e) => {
+    const season = e.target.value;
+    if (!season) {
+      seasonContent.innerHTML = '<p style="text-align:center;">Select a season above to view results.</p>';
+      return;
+    }
 
-  seasonContent.innerHTML = '<p>Loading Season ' + season + '...</p>';
+    seasonContent.innerHTML = '<p style="text-align:center;">Loading Season ' + season + '...</p>';
 
-  try {
-    const timestamp = new Date().getTime();
-    const response = await fetch(`seasons/season${season}.html?t=${timestamp}`);
-    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-    const html = await response.text();
-    seasonContent.innerHTML = html;
-  } catch (err) {
-    console.error('Season load error:', err);
-    seasonContent.innerHTML = '<p style="color:#ff4500;">Error loading season. Please check if season' + season + '.html exists.</p>';
-  }
+    try {
+      const timestamp = new Date().getTime();
+      const response = await fetch(`seasons/season${season}.html?t=${timestamp}`);
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+      const html = await response.text();
+      seasonContent.innerHTML = html;
+    } catch (err) {
+      console.error('Season load error:', err);
+      seasonContent.innerHTML = '<p style="color:#ff4500; text-align:center;">Error loading season. Please check if seasons/season' + season + '.html exists.</p>';
+    }
+  });
 });
 </script>
 
