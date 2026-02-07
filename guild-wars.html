@@ -78,8 +78,6 @@ border-radius:12px;
 padding:2rem;
 min-height:400px;
 }
-footer { background:#000; padding:3rem 2rem; text-align:center; border-top:2px solid var(--gold); }
-footer p { margin:0.6rem 0; opacity:0.85; }
 @media (max-width:768px) {
 nav { padding:0.8rem 1rem; flex-wrap:wrap; }
 .nav-links { justify-content:center; }
@@ -90,23 +88,7 @@ main { padding-top:100px; }
 </head>
 <body>
 
-<nav>
-<a href="index.html">
-<img src="/ninja-master-fan-site/images/ninja-master-icon.png" alt="Ninja Master Icon" class="nav-logo">
-</a>
-<div class="nav-links">
-<a href="index.html" class="nav-link">Home</a>
-<a href="https://play.google.com/store/apps/details?id=com.BitEasyInteractive.NinjaMaster" target="_blank" class="nav-link">Play Now</a>
-<a href="https://www.facebook.com/profile.php?id=100083121342903" target="_blank" class="nav-link">News</a>
-<a href="https://www.facebook.com/groups/ninjamasterashinobisaga" target="_blank" class="nav-link">Community</a>
-<a href="guild-wars.html" class="nav-link">Guild Wars History</a>
-<a href="https://nm-kekkai-solver.netlify.app/" target="_blank" class="nav-link">Kekkai Solver</a>
-<a href="https://nm-stats-simulator.vercel.app/" target="_blank" class="nav-link">Stats Simulator</a>
-<a href="https://ninjamaster.rpg-board.net/f3-guides" target="_blank" class="nav-link">Guides</a>
-<a href="https://ninjamaster.rpg-board.net/" target="_blank" class="nav-link">Forum</a>
-<a href="https://ninjamaster.rpg-board.net/f5-support-questions" target="_blank" class="nav-link">Support</a>
-</div>
-</nav>
+<div id="nav-placeholder"></div>
 
 <main>
 <h1>Guild Wars History</h1>
@@ -134,51 +116,54 @@ main { padding-top:100px; }
 </div>
 </main>
 
-<footer>
-<p>Fan-made site for Ninja Master: A Shinobi Saga • Not official • © 2026 John</p>
-<p style="margin-top:1rem; font-size:0.95rem; opacity:0.7;">
-Built with passion for the shinobi community • Hosted on GitHub Pages
-</p>
-</footer>
+<div id="footer-placeholder"></div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-const currentFile = window.location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('.nav-link').forEach(link => {
-const href = link.getAttribute('href');
-if (href.startsWith('http') || href.startsWith('//')) return;
-const targetFile = href.split('/').pop() || 'index.html';
-if (currentFile === targetFile) {
-link.classList.add('active');
-}
-});
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const navResponse = await fetch('nav.html');
+    document.getElementById('nav-placeholder').innerHTML = await navResponse.text();
+
+    const footerResponse = await fetch('footer.html');
+    document.getElementById('footer-placeholder').innerHTML = await footerResponse.text();
+
+    const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href.startsWith('http') || href.startsWith('//')) return;
+      const targetFile = href.split('/').pop() || 'index.html';
+      if (currentFile === targetFile) {
+        link.classList.add('active');
+      }
+    });
+  } catch (err) {
+    console.error('Error loading shared components:', err);
+  }
 });
 
-// Season loading
+// Season loading (unchanged)
 const seasonSelect = document.getElementById('seasonSelect');
 const seasonContent = document.getElementById('seasonContent');
 
 seasonSelect.addEventListener('change', async (e) => {
-const season = e.target.value;
-if (!season) {
-seasonContent.innerHTML = '<p>Select a season above to view results.</p>';
-return;
-}
+  const season = e.target.value;
+  if (!season) {
+    seasonContent.innerHTML = '<p>Select a season above to view results.</p>';
+    return;
+  }
 
-seasonContent.innerHTML = '<p>Loading Season ' + season + '...</p>';
+  seasonContent.innerHTML = '<p>Loading Season ' + season + '...</p>';
 
-try {
-const timestamp = new Date().getTime();
-const response = await fetch(`seasons/season${season}.html?t=${timestamp}`);
-if (!response.ok) {
-throw new Error(`HTTP error! Status: ${response.status}`);
-}
-const html = await response.text();
-seasonContent.innerHTML = html;
-} catch (err) {
-console.error('Season load error:', err);
-seasonContent.innerHTML = '<p style="color:#ff4500;">Error loading season. Please check if season' + season + '.html exists in the seasons folder.</p>';
-}
+  try {
+    const timestamp = new Date().getTime();
+    const response = await fetch(`seasons/season${season}.html?t=${timestamp}`);
+    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+    const html = await response.text();
+    seasonContent.innerHTML = html;
+  } catch (err) {
+    console.error('Season load error:', err);
+    seasonContent.innerHTML = '<p style="color:#ff4500;">Error loading season. Please check if season' + season + '.html exists.</p>';
+  }
 });
 </script>
 
