@@ -59,9 +59,11 @@ nav:hover {
 }
 
 .nav-logo {
-    height: 42px;
+    height: 52px;                    /* increased from 42px to make it noticeably bigger */
     width: auto;
+    max-height: 56px;                /* safety cap so it never exceeds navbar height */
     transition: transform 0.3s;
+    margin-right: 1.5rem;            /* adds breathing space so it doesn't crowd the first link */
 }
 
 .nav-logo:hover {
