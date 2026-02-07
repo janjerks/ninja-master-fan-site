@@ -4,47 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Forum – Ninja Master: A Shinobi Saga Fan Community</title>
-  <!-- Same head -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Same nav + script -->
 
-  <section class="section">
-    <div class="hero-content" style="text-align:center; padding: 6rem 2rem 2rem;">
-      <h1>Community Forum</h1>
-      <p>Discuss strategies, report bugs, suggest features, and connect with other players.</p>
+<div id="nav-placeholder"></div>
+
+<section class="section">
+  <div class="hero-content" style="text-align:center; padding: 6rem 2rem 2rem;">
+    <h1>Community Forum</h1>
+    <p>Discuss strategies, report bugs, suggest features, and connect with other players.</p>
+  </div>
+
+  <div class="features-grid" style="max-width:1100px; margin:0 auto;">
+    <div class="feature-card">
+      <h3>Main Discussions</h3>
+      <p>General talks, questions, and game chat.</p>
+      <a href="https://ninjamaster.rpg-board.net/f2-discussions" target="_blank" class="btn-primary">Go to Discussions</a>
     </div>
-
-    <div class="features-grid" style="max-width:1100px; margin:0 auto;">
-      <div class="feature-card">
-        <h3>Main Discussions</h3>
-        <p>General talks, questions, and game chat.</p>
-        <a href="https://ninjamaster.rpg-board.net/f2-discussions" target="_blank" class="btn-primary">Go to Discussions</a>
-      </div>
-      <div class="feature-card">
-        <h3>Guides Section</h3>
-        <p>Detailed player guides and tutorials.</p>
-        <a href="https://ninjamaster.rpg-board.net/f3-guides" target="_blank" class="btn-primary">Browse Guides</a>
-      </div>
-      <div class="feature-card">
-        <h3>Support / Questions</h3>
-        <p>Get help from the community or devs.</p>
-        <a href="https://ninjamaster.rpg-board.net/f5-support-questions" target="_blank" class="btn-primary">Ask a Question</a>
-      </div>
-      <div class="feature-card">
-        <h3>Guild War Results</h3>
-        <p>Past season rankings and rewards.</p>
-        <a href="https://ninjamaster.rpg-board.net/f10-guild-war-results-and-rewards" target="_blank" class="btn-primary">View Results</a>
-      </div>
+    <div class="feature-card">
+      <h3>Guides Section</h3>
+      <p>Detailed player guides and tutorials.</p>
+      <a href="https://ninjamaster.rpg-board.net/f3-guides" target="_blank" class="btn-primary">Browse Guides</a>
     </div>
-
-    <div style="text-align:center; margin:4rem 0;">
-      <a href="https://ninjamaster.rpg-board.net/" target="_blank" class="btn-secondary" style="font-size:1.4rem; padding:1.4rem 3.5rem;">
-        Visit Full Forum
-      </a>
+    <div class="feature-card">
+      <h3>Support / Questions</h3>
+      <p>Get help from the community or devs.</p>
+      <a href="https://ninjamaster.rpg-board.net/f5-support-questions" target="_blank" class="btn-primary">Ask a Question</a>
     </div>
-  </section>
+    <div class="feature-card">
+      <h3>Guild War Results</h3>
+      <p>Past season rankings and rewards.</p>
+      <a href="https://ninjamaster.rpg-board.net/f10-guild-war-results-and-rewards" target="_blank" class="btn-primary">View Results</a>
+    </div>
+  </div>
 
-  <!-- Footer + script -->
+  <div style="text-align:center; margin:4rem 0;">
+    <a href="https://ninjamaster.rpg-board.net/" target="_blank" class="btn-secondary" style="font-size:1.4rem; padding:1.4rem 3.5rem;">
+      Visit Full Forum
+    </a>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const navResponse = await fetch('nav.html');
+    document.getElementById('nav-placeholder').innerHTML = await navResponse.text();
+
+    const footerResponse = await fetch('footer.html');
+    document.getElementById('footer-placeholder').innerHTML = await footerResponse.text();
+
+    const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href.startsWith('http') || href.startsWith('//')) return;
+      const targetFile = href.split('/').pop() || 'index.html';
+      if (currentFile === targetFile) {
+        link.classList.add('active');
+      }
+    });
+  } catch (err) {
+    console.error('Error loading shared components:', err);
+  }
+});
+</script>
+
 </body>
 </html>
