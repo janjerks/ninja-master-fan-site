@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News – Ninja Master: A Shinobi Saga Fan Community</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Reuse the same <style> block from index.html – copy it here or move to external css/style.css if you prefer -->
+  <style>
+    /* Paste your full <style> from index.html here for consistency, or link properly */
+    /* ... (copy the entire :root + all styles from index.html) ... */
+  </style>
+</head>
+<body>
+  <!-- Reuse the same nav from index.html -->
+  <nav>
+    <!-- Paste the updated nav block from above here -->
+  </nav>
+
+  <section class="section">
+    <div class="hero-content" style="text-align:center; padding: 6rem 2rem 2rem;">
+      <h1>Latest News & Updates</h1>
+      <p>Stay up-to-date with Ninja Master: A Shinobi Saga announcements, patches, events, and community highlights.</p>
+    </div>
+
+    <div class="features-grid" style="max-width:1100px; margin:0 auto;">
+      <!-- Example news cards – add more as needed -->
+      <div class="feature-card">
+        <h3>Online Raid Season 13 Live!</h3>
+        <p style="color:var(--text-light); font-size:1.1rem;">Update v1.2.1.597 – New raid boss season + exclusive s13 rewards. Update now on Google Play!</p>
+        <p style="font-size:0.95rem; opacity:0.7;">Posted ~Feb 2026</p>
+        <a href="https://www.facebook.com/100083121342903/posts/online-raid-season-13-is-now-live-update-to-the-latest-version-nowupdate-v121597/544701234977250" target="_blank" class="btn-primary" style="margin-top:1.5rem;">Read on Facebook</a>
+      </div>
+
+      <div class="feature-card">
+        <h3>Upcoming Features Teaser</h3>
+        <p style="color:var(--text-light); font-size:1.1rem;">Team working on new endgame content, grinds, and the Personal Village system (your own upgradable village!).</p>
+        <p style="font-size:0.95rem; opacity:0.7;">Posted ~Feb 2026</p>
+        <a href="https://www.facebook.com/p/Ninja-Master-100083121342903" target="_blank" class="btn-primary" style="margin-top:1.5rem;">Official Page</a>
+      </div>
+
+      <!-- Add more cards here for future updates -->
+    </div>
+  </section>
+
+  <!-- Footer same as index.html -->
+  <footer>
+    <p>Fan-made site for Ninja Master: A Shinobi Saga • Not official • © 2026 John</p>
+    <p style="margin-top:1rem; font-size:0.95rem; opacity:0.7;">Built with passion for the shinobi community • Hosted on GitHub Pages</p>
+  </footer>
+
+  <!-- Reuse the active link JS script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-link').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('http') || href.startsWith('//')) return;
+        const targetFile = href.split('/').pop() || 'index.html';
+        if (currentFile === targetFile) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
